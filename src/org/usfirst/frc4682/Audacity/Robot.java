@@ -1,4 +1,3 @@
-
 package org.usfirst.frc4682.Audacity;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
