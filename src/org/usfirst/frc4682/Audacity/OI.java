@@ -1,8 +1,10 @@
 package org.usfirst.frc4682.Audacity;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
+//import edu.wpi.first.wpilibj.GenericHID.Hand;
 import org.usfirst.frc4682.Audacity.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -10,6 +12,9 @@ import edu.wpi.first.wpilibj.Joystick;
 public class OI {
     Joystick leftJoy = new Joystick(1);
     Joystick rightJoy = new Joystick(2);
+    
+    Button button3 = new JoystickButton(leftJoy, 3);
+    
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
@@ -43,7 +48,7 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
 
     public OI() {
-	    
+        button3.whileHeld(new ToggleAimMode());
         // SmartDashboard Buttons
         SmartDashboard.putData("startFlyWheel", new startFlyWheel());
         SmartDashboard.putData("stopFlyWheel", new stopFlyWheel());
