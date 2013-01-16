@@ -4,9 +4,9 @@ package org.usfirst.frc4682.Audacity.commands;
  *
  * @author luis
  */
-public class ToggleAimMode extends CommandBase {
+public class AimMode extends CommandBase {
     
-    public ToggleAimMode() {
+    public AimMode() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }

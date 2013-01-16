@@ -48,7 +48,7 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
 
     public OI() {
-        button3.whileHeld(new ToggleAimMode());
+        button3.whileHeld(new AimMode());
         // SmartDashboard Buttons
         SmartDashboard.putData("startFlyWheel", new startFlyWheel());
         SmartDashboard.putData("stopFlyWheel", new stopFlyWheel());
