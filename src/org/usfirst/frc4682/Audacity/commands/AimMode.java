@@ -8,7 +8,7 @@ public class AimMode extends CommandBase {
     
     public AimMode() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        requires(chassis);
     }
 
     // Called just before this Command runs the first time
@@ -17,7 +17,11 @@ public class AimMode extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        chassis.tankDrive(
+                oi.getLeftSpeed() * 0.2,
+                oi.getRightSpeed() * 0.2);
     }
+
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
