@@ -17,7 +17,7 @@ public class Chassis extends Subsystem {
     }
     
     public void driveForward() {
-        drive.setSafetyEnabled(true);
+        drive.setSafetyEnabled(false);
         drive.drive(0.5, 0);
         Timer.delay(2);
         drive.drive(0, 0);

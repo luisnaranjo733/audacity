@@ -14,6 +14,7 @@ import org.usfirst.frc4682.Audacity.subsystems.*;
  */
 public class Robot extends IterativeRobot {
     Command autonomousCommand;
+    Command teleopCommand;
     public static OI oi;
     public static Feeder feeder;
     public static Chassis chassis;
@@ -38,6 +39,7 @@ public class Robot extends IterativeRobot {
 	
         // instantiate the command used for the autonomous period
         autonomousCommand = new Autonomous();
+        teleopCommand = new DriveWithJoysticks();
     }
     public void autonomousInit() {
         // schedule the autonomous command (example)
@@ -55,7 +57,7 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
-       new DriveWithJoysticks().start();
+       Scheduler.getInstance().add(teleopCommand);
        // while loop?
     }
     /**
