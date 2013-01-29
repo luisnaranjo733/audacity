@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc4682.Audacity.commands.CommandBase;
 import org.usfirst.frc4682.Audacity.commands.DriveWithJoysticks;
+import org.usfirst.frc4682.Audacity.commands.Autonomous;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -32,7 +33,7 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
         // instantiate the command used for the autonomous period
-        autonomousCommand = new DriveWithJoysticks();
+        autonomousCommand = new Autonomous();
 
         // Initialize all subsystems
         CommandBase.init();
