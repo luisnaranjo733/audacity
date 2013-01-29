@@ -1,3 +1,7 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package org.usfirst.frc4682.Audacity.commands;
 
 /**
@@ -8,7 +12,7 @@ public class DriveWithJoysticks extends CommandBase {
     
     public DriveWithJoysticks() {
         // Use requires() here to declare subsystem dependencies
-        requires(chassis);
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
@@ -17,9 +21,6 @@ public class DriveWithJoysticks extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        chassis.tankDrive(
-                oi.getLeftSpeed(),
-                oi.getRightSpeed());
     }
 
     // Make this return true when this Command no longer needs to run execute()

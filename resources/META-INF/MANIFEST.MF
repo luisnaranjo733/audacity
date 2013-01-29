@@ -1,4 +1,4 @@
-MIDlet-Name: RobotBuilderTest
+MIDlet-Name: Audacity
 MIDlet-Version: 1.0.0
 MIDlet-Vendor: FIRST
 MIDlet-1: Robot, , org.usfirst.frc4682.Audacity.Robot

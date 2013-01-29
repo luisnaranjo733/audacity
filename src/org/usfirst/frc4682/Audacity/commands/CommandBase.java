@@ -1,44 +1,41 @@
 package org.usfirst.frc4682.Audacity.commands;
 
-/**
- *
- * @author luis
- */
-
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc4682.Audacity.OI;
-import org.usfirst.frc4682.Audacity.subsystems.Chassis;
-import org.usfirst.frc4682.Audacity.subsystems.Feeder;
-import org.usfirst.frc4682.Audacity.subsystems.Loader;
-import org.usfirst.frc4682.Audacity.subsystems.Shooter;
+import org.usfirst.frc4682.Audacity.subsystems.*;
 
+/**
+ * The base for all commands. All atomic commands should subclass CommandBase.
+ * CommandBase stores creates and stores each control system. To access a
+ * subsystem elsewhere in your code in your code use CommandBase.exampleSubsystem
+ * @author Author
+ */
 public abstract class CommandBase extends Command {
-    // CommandBase holds a static instance of OI
+
     public static OI oi;
-    
-    // Instances of each subsystem
-    public static Chassis chassis = new Chassis();
-    public static Feeder feeder = new Feeder();
-    public static Loader loader = new Loader();
+    // Create a single static instance of all of your subsystems
+    public static DriveTrain driveTrain = new DriveTrain();
     public static Shooter shooter = new Shooter();
-    
-    /**
-     * Call this command to properly finish initializing the CommandBase.
-     * This call is automatically included in the default template.
-     */
+
     public static void init() {
+        // This MUST be here. If the OI creates Commands (which it very likely
+        // will), constructing it during the construction of CommandBase (from
+        // which commands extend), subsystems are not guaranteed to be
+        // yet. Thus, their requires() statements may grab null pointers. Bad
+        // news. Don't move it.
         oi = new OI();
-        
-        // Optional: Logs the currently running command for each subsystem in
-        //           the SmartDashboard. This can be useful for debugging.
-        SmartDashboard.putData(chassis);
-        SmartDashboard.putData(feeder);
-        SmartDashboard.putData(loader);
+
+        // Show what command your subsystem is running on the SmartDashboard
+        SmartDashboard.putData(driveTrain);
         SmartDashboard.putData(shooter);
     }
-    
-    // Automatically created constructors.
-    public CommandBase(String name) { super(name); }
-    public CommandBase() { super(); }
+
+    public CommandBase(String name) {
+        super(name);
+    }
+
+    public CommandBase() {
+        super();
+    }
 }

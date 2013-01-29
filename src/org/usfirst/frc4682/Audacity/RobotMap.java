@@ -1,8 +1,5 @@
 package org.usfirst.frc4682.Audacity;
-    
-import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import java.util.Vector;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -10,34 +7,18 @@ import java.util.Vector;
  * floating around.
  */
 public class RobotMap {
-    public static SpeedController feederMotor;
-    public static SpeedController chassisleftMotor;
-    public static SpeedController chassisrightMotor;
-    public static RobotDrive chassisDrive;
-    public static SpeedController shooterflyWheel;
-    public static SpeedController loaderloadWheel;
-    public static void init() {
-        feederMotor = new Victor(1, 5);
-	LiveWindow.addActuator("Feeder", "Motor", (Victor) feederMotor);
-        
-        chassisleftMotor = new Victor(1, 1);
-	LiveWindow.addActuator("Chassis", "leftMotor", (Victor) chassisleftMotor);
-        
-        chassisrightMotor = new Victor(1, 2);
-	LiveWindow.addActuator("Chassis", "rightMotor", (Victor) chassisrightMotor);
-        
-        chassisDrive = new RobotDrive(chassisleftMotor, chassisrightMotor);
-	
-        chassisDrive.setSafetyEnabled(true);
-        chassisDrive.setExpiration(0.1);
-        chassisDrive.setSensitivity(0.5);
-        chassisDrive.setMaxOutput(1.0);
-        
-        shooterflyWheel = new Victor(1, 3);
-	LiveWindow.addActuator("Shooter", "flyWheel", (Victor) shooterflyWheel);
-        
-        loaderloadWheel = new Victor(1, 4);
-	LiveWindow.addActuator("Loader", "loadWheel", (Victor) loaderloadWheel);
-        
-    }
+    // For example to map the left and right motors, you could define the
+    // following variables to use with your drivetrain subsystem.
+    // public static final int leftMotor = 1;
+    // public static final int rightMotor = 2;
+    
+    // If you are using multiple modules, make sure to define both the port
+    // number and the module. For example you with a rangefinder:
+    // public static final int rangefinderPort = 1;
+    // public static final int rangefinderModule = 1;
+    
+    public static final int leftVictorPort = 1;
+    public static final int rightVictorPort = 2;
+    public static final int leftTalonPort = 3;
+    public static final int rightTalonPort = 4;
 }
