@@ -4,36 +4,18 @@
  */
 package org.usfirst.frc4682.Audacity.subsystems;
 
+import edu.wpi.first.wpilibj.command.Subsystem;
+
 /**
  *
  * @author luis
  */
-public class Feeder extends CommandBase {
-    
-    public Feeder() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    }
+public class Feeder extends Subsystem {
+    // Put methods for controlling this subsystem
+    // here. Call these from Commands.
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
-
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    }
-
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
-
-    // Called once after isFinished returns true
-    protected void end() {
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
+    public void initDefaultCommand() {
+        // Set the default command for a subsystem here.
+        //setDefaultCommand(new MySpecialCommand());
     }
 }
