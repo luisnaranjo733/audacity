@@ -23,11 +23,11 @@ public class OI {
     }
     
     public double getLeftThrottle() {
-        return (leftStick.getRawAxis(3) + 1)/2;
+        return -(leftStick.getRawAxis(3) + 1)/2;
     }
     
     public double getRightThrottle() {
-        return (rightStick.getRawAxis(3) + 1)/2;
+        return -(rightStick.getRawAxis(3) + 1)/2;
     }
 }
 
