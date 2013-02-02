@@ -1,8 +1,8 @@
 package org.usfirst.frc4682.Audacity.commands;
 
-public class TuneShooter extends CommandBase {
+public class StopShooter extends CommandBase {
     
-    public TuneShooter() {
+    public StopShooter() {
         requires(shooter);
     }
 
@@ -12,8 +12,7 @@ public class TuneShooter extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        shooter.setLeftWheel(oi.getLeftThrottle());
-        shooter.setRightWheel(oi.getRightThrottle());
+        shooter.stopBothWheels();
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -38,11 +38,10 @@ public class Shooter extends Subsystem {
     
     public void stopLeftWheel() {
         setLeftWheel(0.0);
-        
     }
     
     public void stopRightWheel() {
-        setLeftWheel(0.0);
+        setRightWheel(0.0);
     }
     
     public void stopBothWheels() {
