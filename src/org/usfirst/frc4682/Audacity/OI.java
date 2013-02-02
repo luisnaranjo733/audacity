@@ -11,8 +11,8 @@ import org.usfirst.frc4682.Audacity.commands.StopShooter;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-    Joystick leftStick = new Joystick(1);
-    Joystick rightStick = new Joystick(2);
+    public Joystick leftStick = new Joystick(1);
+    public Joystick rightStick = new Joystick(2);
 
     Button leftButton2 = new JoystickButton(leftStick, 2);
     Button rightButton2 = new JoystickButton(rightStick, 2);

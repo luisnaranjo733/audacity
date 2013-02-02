@@ -8,6 +8,7 @@ public class TuneShooter extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        System.out.print("Tuning shooter...");
     }
 
     // Called repeatedly when this Command is scheduled to run

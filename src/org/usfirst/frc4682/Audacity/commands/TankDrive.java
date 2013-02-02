@@ -8,19 +8,20 @@ package org.usfirst.frc4682.Audacity.commands;
  *
  * @author luis
  */
-public class DriveWithJoysticks extends CommandBase {
+public class TankDrive extends CommandBase {
     
-    public DriveWithJoysticks() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    public TankDrive() {
+        requires(driveTrain);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        System.out.print("Starting tank drive...");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        driveTrain.tankDrive(oi.leftStick, oi.rightStick);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -30,6 +31,7 @@ public class DriveWithJoysticks extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
+        driveTrain.stopBothMotors();
     }
 
     // Called when another command which requires one or more of the same

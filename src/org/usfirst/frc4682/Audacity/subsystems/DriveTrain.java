@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.GenericHID;
 import org.usfirst.frc4682.Audacity.RobotMap;
+import org.usfirst.frc4682.Audacity.commands.TankDrive;
 /**
  *
  * @author luis
@@ -17,8 +18,7 @@ public class DriveTrain extends Subsystem {
     RobotDrive drive = new RobotDrive(leftVictor, rightVictor);
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new TankDrive());
     }
 
     public void tankDrive(GenericHID leftJoy, GenericHID rightJoy){
@@ -27,6 +27,19 @@ public class DriveTrain extends Subsystem {
     
     public void arcadeDrive(GenericHID stick){
         drive.arcadeDrive(stick);
+    }
+    
+    public void stopLeftMotor() {
+        leftVictor.set(0.0);
+    }
+    
+    public void stopRightMotor() {
+        rightVictor.set(0.0);
+    }
+    
+    public void stopBothMotors() {
+        stopLeftMotor();
+        stopRightMotor();
     }
 
 }
