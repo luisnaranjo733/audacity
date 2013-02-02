@@ -1,6 +1,7 @@
 package org.usfirst.frc4682.Audacity.commands;
 
 public class StopShooter extends CommandBase {
+    boolean stopped = false;
     
     public StopShooter() {
         requires(shooter);
@@ -13,11 +14,12 @@ public class StopShooter extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         shooter.stopBothWheels();
+        stopped = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
+    protected boolean isFinished() { // This command is run on a button press
+        return stopped; // we only need to stop the wheels once per trigger.
     }
 
     // Called once after isFinished returns true
