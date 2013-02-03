@@ -1,5 +1,11 @@
 package org.usfirst.frc4682.Audacity.commands;
 
+/*
+ * This command only manages the control of the shooter wheel speeds.
+ * It uses the throttle on the first two connected joysticks.
+ * A 90 degree throttle above the horizontal is full speed.
+ */
+
 public class TuneShooter extends CommandBase {
     
     public TuneShooter() {
