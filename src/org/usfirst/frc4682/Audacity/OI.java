@@ -16,10 +16,17 @@ public class OI {
 
     Button leftButton2 = new JoystickButton(leftStick, 2);
     Button rightButton2 = new JoystickButton(rightStick, 2);
+
+    Button leftButton3 = new JoystickButton(leftStick, 3);
+    Button rightButton3 = new JoystickButton(rightStick, 3);
     
     public OI() {
         leftButton2.whenPressed(new StopShooter());
         rightButton2.whenPressed(new StopShooter());
+        
+        leftButton3.whenPressed(new TuneShooter());
+        rightButton3.whenPressed(new TuneShooter());
+        
         SmartDashboard.putData("StopShooter", new StopShooter());
         SmartDashboard.putData("TuneShooter", new TuneShooter());
     }
