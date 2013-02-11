@@ -16,8 +16,8 @@ import org.usfirst.frc4682.Audacity.commands.TuneShooter;
 public class Shooter extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    SpeedController leftTalon = new Talon(RobotMap.leftTalonPort);
-    SpeedController rightTalon = new Talon(RobotMap.rightTalonPort);
+    SpeedController leftTalon = new Talon(RobotMap.leftShooterPort);
+    SpeedController rightTalon = new Talon(RobotMap.rightShooterPort);
 
     public void initDefaultCommand() {
         setDefaultCommand(new TuneShooter());

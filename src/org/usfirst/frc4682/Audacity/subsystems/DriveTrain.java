@@ -13,8 +13,8 @@ import org.usfirst.frc4682.Audacity.commands.TankDrive;
  */
 public class DriveTrain extends Subsystem {
     
-    SpeedController leftVictor = new Victor(RobotMap.leftVictorPort);
-    SpeedController rightVictor = new Victor(RobotMap.rightVictorPort);
+    SpeedController leftVictor = new Victor(RobotMap.leftDrivePort);
+    SpeedController rightVictor = new Victor(RobotMap.rightDrivePort);
     RobotDrive drive = new RobotDrive(leftVictor, rightVictor);
 
     public void initDefaultCommand() {
