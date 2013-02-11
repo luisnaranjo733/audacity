@@ -20,13 +20,17 @@ public class OI {
     Button leftButton3 = new JoystickButton(leftStick, 3);
     Button rightButton3 = new JoystickButton(rightStick, 3);
     
+    Button leftButton1 = new JoystickButton(leftStick, 1);
+    Button rightButton1 = new JoystickButton(rightStick, 1);
     public OI() {
-        leftButton2.whenPressed(new StopShooter());
+        leftButton2.whenPressed(new StopShooter()); // maybe share an instance
         rightButton2.whenPressed(new StopShooter());
         
-        leftButton3.whenPressed(new TuneShooter());
+        leftButton3.whenPressed(new TuneShooter()); // maybe share an instance
         rightButton3.whenPressed(new TuneShooter());
         
+        leftButton1.whenPressed(new Feed());
+        rightButton1.whenPressed(new Feed());
         SmartDashboard.putData("StopShooter", new StopShooter());
         SmartDashboard.putData("TuneShooter", new TuneShooter());
     }

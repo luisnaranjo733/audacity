@@ -16,6 +16,13 @@ public class FeederToEndpoint extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        System.out.print("Initializing Feeder to End point command");
+        if(feeder.atEndLimit()) {
+            System.out.print("Feeder is at the end limit");
+        }
+        else {
+            System.out.print("Feeder is not at the end limit");
+        }
     }
 
     // Called repeatedly when this Command is scheduled to run

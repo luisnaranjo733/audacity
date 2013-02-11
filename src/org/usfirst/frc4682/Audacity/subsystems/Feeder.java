@@ -9,8 +9,6 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.DigitalInput;
 import org.usfirst.frc4682.Audacity.RobotMap;
-import org.usfirst.frc4682.Audacity.commands.FeederToStartpoint;
-
 /**
  *
  * @author luis
@@ -23,10 +21,11 @@ public class Feeder extends Subsystem {
     // here. Call these from Commands.
 
     public void initDefaultCommand() {
-        setDefaultCommand(new FeederToStartpoint()); // is this necessary?
+        //setDefaultCommand(new FeederToStartpoint()); // is this necessary?
     }
     
-    public boolean atEndLimit() {
+    public boolean atEndLimit() { // Normally open limit switch
+        // should become closed (true) when the switch is hit
         return endLimit.get();
     }
     

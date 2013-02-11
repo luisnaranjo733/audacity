@@ -16,6 +16,13 @@ public class FeederToStartpoint extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        System.out.print("Initializing Feeder to Start point command");
+        if(feeder.atStartLimit()) {
+            System.out.print("Feeder is at the start limit");
+        }
+        else {
+            System.out.print("Feeder is not at the start limit");
+        }
     }
 
     // Called repeatedly when this Command is scheduled to run
