@@ -29,7 +29,7 @@ public class OI {
         leftButton3.whenPressed(new TuneShooter()); // maybe share an instance
         rightButton3.whenPressed(new TuneShooter());
         
-        leftButton1.whenPressed(new Feed());
+        leftButton1.whenPressed(new TestLimitSwitch());
         rightButton1.whenPressed(new Feed());
         SmartDashboard.putData("StopShooter", new StopShooter());
         SmartDashboard.putData("TuneShooter", new TuneShooter());
