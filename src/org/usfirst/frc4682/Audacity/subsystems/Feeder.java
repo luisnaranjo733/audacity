@@ -17,15 +17,13 @@ public class Feeder extends Subsystem {
     SpeedController feeder = new Jaguar(RobotMap.FeederPort);
     DigitalInput startLimit = new DigitalInput(1,1);
     DigitalInput endLimit = new DigitalInput(1,2);
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
 
     public void initDefaultCommand() {
-        //setDefaultCommand(new FeederToStartpoint()); // is this necessary?
     }
     
     public boolean atEndLimit() { // Normally open limit switch
-        // should become closed (true) when the switch is hit
+        // return true when normally open
+        // return false when circuit is closed
         return !endLimit.get();
     }
     
@@ -35,7 +33,7 @@ public class Feeder extends Subsystem {
     
     public void setSpeed(double speed) {
         feeder.set(speed);
+        System.out.print("Set feeder wheel to: " + speed + "\n");
     }
-    
     
 }

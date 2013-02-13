@@ -7,19 +7,15 @@ package org.usfirst.frc4682.Audacity;
  * floating around.
  */
 public class RobotMap {
-    // For example to map the left and right motors, you could define the
-    // following variables to use with your drivetrain subsystem.
-    // public static final int leftMotor = 1;
-    // public static final int rightMotor = 2;
     
-    // If you are using multiple modules, make sure to define both the port
-    // number and the module. For example you with a rangefinder:
-    // public static final int rangefinderPort = 1;
-    // public static final int rangefinderModule = 1;
-    
-    public static final int leftDrivePort = 9;
-    public static final int rightDrivePort = 10;
+    // PWM ports
     public static final int leftShooterPort = 1;
     public static final int rightShooterPort = 2;
     public static final int FeederPort = 3;
+    public static final int leftDrivePort = 9;
+    public static final int rightDrivePort = 10;
+    
+    // Digital I/O ports
+    public static final int startLimitSwitchPort = 1;
+    public static final int endLimitSwitchPort = 2;
 }

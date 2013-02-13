@@ -9,6 +9,7 @@ package org.usfirst.frc4682.Audacity.commands;
  * @author luis
  */
 public class FeederToStartpoint extends CommandBase {
+    boolean notifyExecute;
     
     public FeederToStartpoint() {
         requires(feeder);
@@ -17,21 +18,16 @@ public class FeederToStartpoint extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
         System.out.print("Initializing Feeder to Start point command");
-        if(feeder.atStartLimit()) {
-            System.out.print("Feeder is at the start limit");
-        }
-        else {
-            System.out.print("Feeder is not at the start limit");
-        }
+        System.out.print("At start limit? " + feeder.atStartLimit() + "\n");
+        notifyExecute = true;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        /* if the initDefault command on the Feeder subsystem calls this command
-         * and makes it go backwards, in this method test to see if the switch
-         * is already being hit, and if so don't set the speed. Do the same
-         * for the other Command, FeederToEndpoint.java
-         */
+        if (notifyExecute == true) {
+            System.out.print("Beginning to drive backwards\n");
+            notifyExecute = false;
+        }
         feeder.setSpeed(-0.3);
     }
 
@@ -42,11 +38,13 @@ public class FeederToStartpoint extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
+        System.out.print("Feeder to startpoint command is finished.\n");
         feeder.setSpeed(0.0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        System.out.print("Feeder To startpoint command has been interrupted");
     }
 }
