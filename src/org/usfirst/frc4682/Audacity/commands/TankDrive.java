@@ -16,7 +16,7 @@ public class TankDrive extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        System.out.print("Starting tank drive...");
+        System.out.print("Starting tank drive...\n");
     }
 
     // Called repeatedly when this Command is scheduled to run
