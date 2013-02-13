@@ -15,14 +15,14 @@ import org.usfirst.frc4682.Audacity.RobotMap;
  */
 public class Feeder extends Subsystem {
     SpeedController feeder = new Jaguar(RobotMap.FeederPort);
-    DigitalInput startLimit = new DigitalInput(1,1);
-    DigitalInput endLimit = new DigitalInput(1,2);
+    DigitalInput startLimit = new DigitalInput(RobotMap.startLimitSwitchPort);
+    DigitalInput endLimit = new DigitalInput(RobotMap.endLimitSwitchPort);
 
     public void initDefaultCommand() {
     }
     
     public boolean atEndLimit() { // Normally open limit switch
-        // return true when normally open
+        // return true when circuit is open
         // return false when circuit is closed
         return !endLimit.get();
     }
