@@ -17,9 +17,9 @@ public class RobotMap {
     // public static final int rangefinderPort = 1;
     // public static final int rangefinderModule = 1;
     
-    public static final int leftDrivePort = 1;
-    public static final int rightDrivePort = 2;
-    public static final int leftShooterPort = 3;
-    public static final int rightShooterPort = 4;
-    public static final int FeederPort = 5;
+    public static final int leftDrivePort = 9;
+    public static final int rightDrivePort = 10;
+    public static final int leftShooterPort = 1;
+    public static final int rightShooterPort = 2;
+    public static final int FeederPort = 3;
 }
