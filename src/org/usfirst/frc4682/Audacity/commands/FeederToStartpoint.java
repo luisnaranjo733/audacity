@@ -40,6 +40,7 @@ public class FeederToStartpoint extends CommandBase {
     protected void end() {
         System.out.print("Feeder to startpoint command is finished.\n");
         feeder.setSpeed(0.0);
+        System.out.print("Stopped feeder wheel\n");
     }
 
     // Called when another command which requires one or more of the same

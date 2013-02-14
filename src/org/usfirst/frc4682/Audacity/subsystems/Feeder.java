@@ -5,7 +5,7 @@
 package org.usfirst.frc4682.Audacity.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.Jaguar;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.DigitalInput;
 import org.usfirst.frc4682.Audacity.RobotMap;
@@ -14,7 +14,7 @@ import org.usfirst.frc4682.Audacity.RobotMap;
  * @author luis
  */
 public class Feeder extends Subsystem {
-    SpeedController feeder = new Jaguar(RobotMap.FeederPort);
+    SpeedController feeder = new Talon(RobotMap.FeederPort);
     DigitalInput startLimit = new DigitalInput(RobotMap.startLimitSwitchPort);
     DigitalInput endLimit = new DigitalInput(RobotMap.endLimitSwitchPort);
 
@@ -33,7 +33,7 @@ public class Feeder extends Subsystem {
     
     public void setSpeed(double speed) {
         feeder.set(speed);
-        System.out.print("Set feeder wheel to: " + speed + "\n");
+        //System.out.print("Set feeder wheel to: " + speed + "\n");
     }
     
 }

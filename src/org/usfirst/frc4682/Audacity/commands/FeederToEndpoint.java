@@ -43,6 +43,7 @@ public class FeederToEndpoint extends CommandBase {
     protected void end() {
         System.out.print("Feeder to endpoint command is finished.\n");
         feeder.setSpeed(0.0);
+        System.out.print("Turned off feeder wheel\n");
     }
 
     // Called when another command which requires one or more of the same
