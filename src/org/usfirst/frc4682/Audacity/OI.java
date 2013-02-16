@@ -26,14 +26,14 @@ public class OI {
         leftButton2.whenPressed(new StopAll()); // maybe share an instance
         rightButton2.whenPressed(new StopAll());
         
-        leftButton3.whenPressed(new TuneShooter()); // maybe share an instance
-        rightButton3.whenPressed(new TuneShooter());
+        //leftButton3.whenPressed(new TuneShooter()); // maybe share an instance
+        //rightButton3.whenPressed(new TuneShooter());
         
         leftButton1.whenPressed(new Feed());
         rightButton1.whenPressed(new Feed());
-        SmartDashboard.putData("StopShooter", new StopShooter());
-        SmartDashboard.putData("TuneShooter", new TuneShooter());
-        SmartDashboard.putData("Feed", new Feed());
+  //      SmartDashboard.putData("StopShooter", new StopShooter());
+    //    SmartDashboard.putData("TuneShooter", new TuneShooter());
+      //  SmartDashboard.putData("Feed", new Feed());
     }
     
     public double getLeftThrottle() { // returns 0 < double < 1

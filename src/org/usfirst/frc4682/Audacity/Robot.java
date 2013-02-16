@@ -37,7 +37,7 @@ public class Robot extends IterativeRobot {
 
         // Initialize all subsystems
         CommandBase.init();
-        SmartDashboard.putData("Scheduler Data", Scheduler.getInstance());
+        //SmartDashboard.putData("Scheduler Data", Scheduler.getInstance());
     }
 
     public void autonomousInit() {

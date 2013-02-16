@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.SpeedController;
 import org.usfirst.frc4682.Audacity.RobotMap;
-//import org.usfirst.frc4682.Audacity.commands.TuneShooter;
+import org.usfirst.frc4682.Audacity.commands.TuneShooter;
 /**
  *
  * @author luis
@@ -20,7 +20,7 @@ public class Shooter extends Subsystem {
     SpeedController rightTalon = new Talon(RobotMap.rightShooterPort);
 
     public void initDefaultCommand() {
-        //setDefaultCommand(new TuneShooter());
+        setDefaultCommand(new TuneShooter());
     }
     
     public void setLeftWheel(double speed) {

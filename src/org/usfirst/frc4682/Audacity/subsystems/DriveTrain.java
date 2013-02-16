@@ -16,6 +16,10 @@ public class DriveTrain extends Subsystem {
     SpeedController leftVictor = new Victor(RobotMap.leftDrivePort);
     SpeedController rightVictor = new Victor(RobotMap.rightDrivePort);
     RobotDrive drive = new RobotDrive(leftVictor, rightVictor);
+    
+    public DriveTrain() {
+        drive.setSafetyEnabled(false);
+    }
 
     public void initDefaultCommand() {
         setDefaultCommand(new TankDrive());

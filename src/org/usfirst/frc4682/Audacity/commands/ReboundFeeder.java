@@ -4,22 +4,21 @@
  */
 package org.usfirst.frc4682.Audacity.commands;
 import org.usfirst.frc4682.Audacity.RobotMap;
-import edu.wpi.first.wpilibj.Timer;
 /**
  *
  * @author luis
  */
-public class FeederToStartpoint extends CommandBase {
+public class ReboundFeeder extends CommandBase {
     boolean notifyExecute;
     
-    public FeederToStartpoint() {
+    
+    
+    public ReboundFeeder() {
         requires(feeder);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        System.out.print("Initializing Feeder to Start point command.\n");
-        System.out.print("Feeder at start limit? " + feeder.atStartLimit() + "\n");
         notifyExecute = true;
     }
 
@@ -29,7 +28,7 @@ public class FeederToStartpoint extends CommandBase {
             System.out.print("Beginning to drive backwards\n");
             notifyExecute = false;
         }
-        feeder.setSpeed(RobotMap.feederSpeed);
+        feeder.setSpeed(-RobotMap.feederSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -42,9 +41,6 @@ public class FeederToStartpoint extends CommandBase {
         System.out.print("Feeder to startpoint command is finished.\n");
         feeder.setSpeed(0.0);
         System.out.print("Stopped feeder wheel\n");
-        feeder.setSpeed(-RobotMap.feederSpeed);
-        Timer.delay(0.1);
-        feeder.setSpeed(0.0);
     }
 
     // Called when another command which requires one or more of the same
