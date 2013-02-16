@@ -11,7 +11,7 @@ public class RobotMap {
     // PWM ports
     public static final int leftShooterPort = 1;
     public static final int rightShooterPort = 2;
-    public static final int FeederPort = 3;
+    public static final int FeederPort = 8;
     public static final int leftDrivePort = 9;
     public static final int rightDrivePort = 10;
     

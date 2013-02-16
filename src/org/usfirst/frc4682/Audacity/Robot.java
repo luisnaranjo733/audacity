@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc4682.Audacity.commands.CommandBase;
-import org.usfirst.frc4682.Audacity.commands.TankDrive;
 import org.usfirst.frc4682.Audacity.commands.Autonomous;
 
 /**

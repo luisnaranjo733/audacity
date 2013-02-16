@@ -20,7 +20,7 @@ public class Shooter extends Subsystem {
     SpeedController rightTalon = new Talon(RobotMap.rightShooterPort);
 
     public void initDefaultCommand() {
-        setDefaultCommand(new TuneShooter());
+        //setDefaultCommand(new TuneShooter());
     }
     
     public void setLeftWheel(double speed) {
