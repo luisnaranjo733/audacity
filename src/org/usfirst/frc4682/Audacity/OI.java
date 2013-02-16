@@ -36,7 +36,7 @@ public class OI {
         SmartDashboard.putData("Feed", new Feed());
     }
     
-    public double getLeftThrottle() {
+    public double getLeftThrottle() { // returns 0 < double < 1
         return -(leftStick.getRawAxis(3) + 1)/2;
     }
     
