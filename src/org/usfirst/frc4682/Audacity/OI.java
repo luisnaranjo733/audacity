@@ -23,8 +23,8 @@ public class OI {
     Button leftButton1 = new JoystickButton(leftStick, 1);
     Button rightButton1 = new JoystickButton(rightStick, 1);
     public OI() {
-        leftButton2.whenPressed(new StopShooter()); // maybe share an instance
-        rightButton2.whenPressed(new StopShooter());
+        leftButton2.whenPressed(new StopAll()); // maybe share an instance
+        rightButton2.whenPressed(new StopAll());
         
         leftButton3.whenPressed(new TuneShooter()); // maybe share an instance
         rightButton3.whenPressed(new TuneShooter());
