@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.usfirst.frc4682.Audacity.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -9,6 +5,7 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.DigitalInput;
 import org.usfirst.frc4682.Audacity.RobotMap;
+import org.usfirst.frc4682.Audacity.commands.TestSwitches;
 /**
  *
  * @author luis
@@ -19,6 +16,7 @@ public class Feeder extends Subsystem {
     DigitalInput endLimit = new DigitalInput(RobotMap.endLimitSwitchPort);
 
     public void initDefaultCommand() {
+            setDefaultCommand(new TestSwitches());
     }
     
     public boolean atEndLimit() { // Normally open limit switch

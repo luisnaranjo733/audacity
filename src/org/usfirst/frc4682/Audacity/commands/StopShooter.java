@@ -13,7 +13,6 @@ public class StopShooter extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        System.out.print("Stopping shooter...");
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -29,6 +28,7 @@ public class StopShooter extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
+        System.out.print("Stopped the shooter\n");
     }
 
     // Called when another command which requires one or more of the same

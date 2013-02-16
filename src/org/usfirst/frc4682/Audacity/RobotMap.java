@@ -18,4 +18,7 @@ public class RobotMap {
     // Digital I/O ports
     public static final int startLimitSwitchPort = 1;
     public static final int endLimitSwitchPort = 2;
+    
+    // constants
+    public static final double feederSpeed = 0.3;
 }

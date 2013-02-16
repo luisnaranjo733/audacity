@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package org.usfirst.frc4682.Audacity.commands;
+import org.usfirst.frc4682.Audacity.RobotMap;
 
 /**
  *
@@ -11,6 +12,7 @@ package org.usfirst.frc4682.Audacity.commands;
 public class FeederToEndpoint extends CommandBase {
     private boolean notifyExecute;
     
+    
     public FeederToEndpoint() {
         requires(feeder);
     }
@@ -18,8 +20,8 @@ public class FeederToEndpoint extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
         System.out.print("Initializing Feeder to End point command\n");
-        System.out.print("At end limit? " + feeder.atEndLimit() + "\n");
         // feeder.atEndLimit() should always be false at first
+        System.out.print("Feeder at end limit? " + feeder.atEndLimit() + "\n");
         notifyExecute = true;
     }
 
@@ -29,7 +31,7 @@ public class FeederToEndpoint extends CommandBase {
             System.out.print("Beginning to drive forward\n");
             notifyExecute = false;
         }
-        feeder.setSpeed(0.3);
+        feeder.setSpeed(RobotMap.feederSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -49,6 +51,6 @@ public class FeederToEndpoint extends CommandBase {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-        System.out.print("Feeder To endpoint command has been interrupted");
+        System.out.print("Feeder To endpoint command has been interrupted\n");
     }
 }

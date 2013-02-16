@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 package org.usfirst.frc4682.Audacity.commands;
-
+import org.usfirst.frc4682.Audacity.RobotMap;
 /**
  *
  * @author luis
@@ -17,8 +17,8 @@ public class FeederToStartpoint extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        System.out.print("Initializing Feeder to Start point command");
-        System.out.print("At start limit? " + feeder.atStartLimit() + "\n");
+        System.out.print("Initializing Feeder to Start point command.\n");
+        System.out.print("Feeder at start limit? " + feeder.atStartLimit() + "\n");
         notifyExecute = true;
     }
 
@@ -28,7 +28,7 @@ public class FeederToStartpoint extends CommandBase {
             System.out.print("Beginning to drive backwards\n");
             notifyExecute = false;
         }
-        feeder.setSpeed(-0.3);
+        feeder.setSpeed(-RobotMap.feederSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -46,6 +46,6 @@ public class FeederToStartpoint extends CommandBase {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-        System.out.print("Feeder To startpoint command has been interrupted");
+        System.out.print("Feeder To startpoint command has been interrupted\n");
     }
 }

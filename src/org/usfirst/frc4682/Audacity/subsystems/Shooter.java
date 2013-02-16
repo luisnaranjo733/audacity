@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.SpeedController;
 import org.usfirst.frc4682.Audacity.RobotMap;
-import org.usfirst.frc4682.Audacity.commands.TuneShooter;
+//import org.usfirst.frc4682.Audacity.commands.TuneShooter;
 /**
  *
  * @author luis
