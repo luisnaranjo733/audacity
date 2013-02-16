@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc4682.Audacity.commands.CommandBase;
 import org.usfirst.frc4682.Audacity.commands.Autonomous;
 
@@ -36,6 +37,7 @@ public class Robot extends IterativeRobot {
 
         // Initialize all subsystems
         CommandBase.init();
+        SmartDashboard.putData("Scheduler Data", Scheduler.getInstance());
     }
 
     public void autonomousInit() {
