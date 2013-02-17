@@ -44,4 +44,3 @@ public class OI {
         return -(rightStick.getRawAxis(3) + 1)/2;
     }
 }
-

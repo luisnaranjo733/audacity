@@ -29,7 +29,8 @@ public class FeederToStartpoint extends CommandBase {
             System.out.print("Beginning to drive backwards\n");
             notifyExecute = false;
         }
-        feeder.setSpeed(RobotMap.feederSpeed);
+        //feeder.setSpeed(RobotMap.feederSpeed);
+        feeder.setSpeed(-oi.getLeftThrottle());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -42,7 +43,8 @@ public class FeederToStartpoint extends CommandBase {
         System.out.print("Feeder to startpoint command is finished.\n");
         feeder.setSpeed(0.0);
         System.out.print("Stopped feeder wheel\n");
-        feeder.setSpeed(-RobotMap.feederSpeed);
+        //feeder.setSpeed(-RobotMap.feederSpeed);
+        feeder.setSpeed(oi.getLeftThrottle());
         Timer.delay(0.1);
         feeder.setSpeed(0.0);
     }

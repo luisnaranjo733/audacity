@@ -16,6 +16,7 @@ public class Feeder extends Subsystem {
     DigitalInput endLimit = new DigitalInput(RobotMap.endLimitSwitchPort);
 
     public void initDefaultCommand() {
+        setDefaultCommand(new TestSwitches());
     }
     
     public boolean atEndLimit() { // Normally open limit switch
