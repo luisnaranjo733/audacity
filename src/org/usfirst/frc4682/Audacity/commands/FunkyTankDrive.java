@@ -24,8 +24,15 @@ public class FunkyTankDrive extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        leftThrottle = 0.5 + (oi.getLeftThrottle() / 2);
-        rightThrottle = 0.5 + (oi.getRightThrottle() / 2);
+        // assuming that 0 < stick.getY < 1
+        // need to implement "Aim Mode"
+        System.out.print("Left Y: " + oi.leftStick.getY() + "\n");
+        leftThrottle = 0.5 + (oi.leftStick.getY() / 2);
+        rightThrottle = 0.5 + (oi.rightStick.getY() / 2);
+        // aim mode
+        // leftThrottle *= oi.getLeftThrottle();
+        // rightThrottle *= oi.getRightThrottle();
+        
         driveTrain.tankDrive(leftThrottle, rightThrottle);
     }
 
