@@ -26,7 +26,6 @@ public class TuneShooter extends CommandBase {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        System.out.print("Button: " + oi.thirdStick.getRawButton(2) + "\n");
         return !oi.thirdStick.getRawButton(2);
     }
 
