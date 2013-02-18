@@ -39,7 +39,7 @@ public class OI {
         return getThrottle(thirdStick);
     }
     public double getThrottle(Joystick stick) {
-        return -(stick.getRawAxis(3) + 1)/2;
+        return (-(stick.getRawAxis(3) + 1)/2) + 1;
         
     }
 

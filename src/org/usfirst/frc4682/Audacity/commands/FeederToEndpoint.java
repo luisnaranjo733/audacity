@@ -32,7 +32,12 @@ public class FeederToEndpoint extends CommandBase {
             System.out.print("Beginning to drive forward\n");
             notifyExecute = false;
         }
-        feeder.setSpeed(-RobotMap.feederSpeed);
+        // feeder.setSpeed(-RobotMap.feederSpeed);
+        double feederSpeed = -(oi.getFirstThrottle() + RobotMap.feederSpeed);
+        // todo: lop 1.4 off to 1.0 here
+        feeder.setSpeed(feederSpeed);
+        //System.out.print("First throttle: " + oi.getFirstThrottle() + "\n");
+        System.out.print("Feeder speed: " + feederSpeed + "\n");
     }
 
     // Make this return true when this Command no longer needs to run execute()

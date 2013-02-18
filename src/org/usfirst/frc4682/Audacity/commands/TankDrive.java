@@ -30,7 +30,7 @@ public class TankDrive extends CommandBase {
         leftThrottle = oi.leftStick.getY() * oi.getSecondThrottle(); // 
         rightThrottle = oi.rightStick.getY() * oi.getSecondThrottle();
         driveTrain.tankDrive(leftThrottle, rightThrottle);
-        System.out.print("Reduction throttle: " + oi.getSecondThrottle() + "\n");
+        //System.out.print("Reduction throttle: " + oi.getSecondThrottle() + "\n");
     }
 
     // Make this return true when this Command no longer needs to run execute()

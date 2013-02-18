@@ -19,8 +19,8 @@ public class TuneShooter extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        shooter.setLeftWheel(oi.getThirdThrottle());
-        shooter.setRightWheel(oi.getThirdThrottle());
+        shooter.setLeftWheel(-oi.getThirdThrottle());
+        shooter.setRightWheel(-oi.getThirdThrottle());
         //System.out.print("Wheel speed: " + oi.getRightThrottle());
     }
 
