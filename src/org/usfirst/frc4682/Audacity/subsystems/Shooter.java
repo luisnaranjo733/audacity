@@ -18,17 +18,32 @@ public class Shooter extends Subsystem {
     // here. Call these from Commands.
     SpeedController leftTalon = new Talon(RobotMap.leftShooterPort);
     SpeedController rightTalon = new Talon(RobotMap.rightShooterPort);
+    private boolean enabled = true;
 
     public void initDefaultCommand() {
         setDefaultCommand(new TuneShooter());
     }
     
+    public void toggleEnabled () {
+        enabled = !enabled;
+        if (enabled == true) {
+            System.out.print("Enabled the shooter.\n");
+        }
+        else {
+            System.out.print("Disabled the shooter.\n");
+        }
+    }
+    
     public void setLeftWheel(double speed) {
-        leftTalon.set(speed);
+        if (enabled == true) {
+            leftTalon.set(speed);
+        }
     }
     
     public void setRightWheel(double speed) {
-        rightTalon.set(speed);
+        if (enabled = true) {
+            rightTalon.set(speed);
+        }
     }
     
     public void setBothWheelSpeeds(double left, double right) {

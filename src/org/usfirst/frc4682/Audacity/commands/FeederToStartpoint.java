@@ -45,7 +45,7 @@ public class FeederToStartpoint extends CommandBase {
         System.out.print("Stopped feeder wheel\n");
         //feeder.setSpeed(-RobotMap.feederSpeed);
         feeder.setSpeed(oi.getLeftThrottle());
-        Timer.delay(0.1);
+        Timer.delay(0.05);
         feeder.setSpeed(0.0);
     }
 

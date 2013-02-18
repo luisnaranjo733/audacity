@@ -19,6 +19,7 @@ public class StopShooter extends CommandBase {
     protected void execute() {
         shooter.stopBothWheels();
         stopped = true;
+        shooter.toggleEnabled();
     }
 
     // Make this return true when this Command no longer needs to run execute()
