@@ -4,13 +4,15 @@
  */
 package org.usfirst.frc4682.Audacity.commands;
 
+import org.usfirst.frc4682.Audacity.RobotMap;
+
 /**
  *
  * @author luis
+ * This ramps up the shooter to the max speed and doesn't end.
  */
 public class ConstantShooter extends CommandBase {
     private double counter = 0.1;
-    private double maxSpeed = 1.0;
     private double incrementer = 0.05;
     
     public ConstantShooter() {
@@ -23,7 +25,7 @@ public class ConstantShooter extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (counter < maxSpeed) {
+        if (counter < RobotMap.shooterSpeed) {
             counter += incrementer;
         }
         shooter.setBothWheels(counter);

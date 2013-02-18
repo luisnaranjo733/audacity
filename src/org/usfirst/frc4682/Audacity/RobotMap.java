@@ -21,6 +21,7 @@ public class RobotMap {
     
     // constants
     public static final double feederSpeed = 0.5;
+    public static final double shooterSpeed = 0.9;
     
     // oi
 }

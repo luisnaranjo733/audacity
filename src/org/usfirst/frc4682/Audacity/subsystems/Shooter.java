@@ -20,8 +20,9 @@ public class Shooter extends Subsystem {
     SpeedController rightTalon = new Talon(RobotMap.rightShooterPort);
     private boolean enabled = true;
 
+    private double incrementer = 0.05;
     public void initDefaultCommand() {
-        setDefaultCommand(new ConstantShooter());
+        // setDefaultCommand(new ConstantShooter());
     }
     
     public void toggleEnabled () {
@@ -62,6 +63,14 @@ public class Shooter extends Subsystem {
     public void stopBothWheels() {
         stopLeftWheel();
         stopRightWheel();
+    }
+    
+    public void rampUpBothWheels(double maxSpeed) {
+        double counter = 0.1;
+        while (counter < maxSpeed) {
+            counter += incrementer;
+            setBothWheels(counter);
+        }
     }
     
 }
