@@ -37,7 +37,7 @@ public class FeederToEndpoint extends CommandBase {
         // todo: lop 1.4 off to 1.0 here
         feeder.setSpeed(feederSpeed);
         //System.out.print("First throttle: " + oi.getFirstThrottle() + "\n");
-        System.out.print("Feeder speed: " + feederSpeed + "\n");
+        //System.out.print("Feeder speed: " + feederSpeed + "\n");
     }
 
     // Make this return true when this Command no longer needs to run execute()
