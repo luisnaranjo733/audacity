@@ -13,29 +13,34 @@ import org.usfirst.frc4682.Audacity.commands.*;
 public class OI {
     public Joystick leftStick = new Joystick(1);
     public Joystick rightStick = new Joystick(2);
+    public Joystick thirdStick = new Joystick(3);
 
-    Button leftButton2 = new JoystickButton(leftStick, 2);
-    Button rightButton2 = new JoystickButton(rightStick, 2);
+    Button shootingButton = new JoystickButton(thirdStick, 2);
     
-    Button leftButton1 = new JoystickButton(leftStick, 1);
-    Button rightButton1 = new JoystickButton(rightStick, 1);
+    Button firingButton = new JoystickButton(thirdStick, 1);
     public OI() {
-        leftButton2.whileHeld(new StopAll());
-        rightButton2.whileHeld(new StopAll());
+        shootingButton.whenPressed(new TuneShooter());
         
-        leftButton1.whenPressed(new Feed());
-        rightButton1.whenPressed(new Feed());
+        firingButton.whenPressed(new Feed());
   //      SmartDashboard.putData("StopShooter", new StopShooter());
     //    SmartDashboard.putData("TuneShooter", new TuneShooter());
       //  SmartDashboard.putData("Feed", new Feed());
     }
     
-    public double getLeftThrottle() { // returns 0 < double < 1
-        return -(leftStick.getRawAxis(3) + 1)/2;
+    public double getFirstThrottle() { // returns 0 < double < 1
+        return getThrottle(leftStick);
     }
     
-    public double getRightThrottle() {
-        return -(rightStick.getRawAxis(3) + 1)/2;
+    public double getSecondThrottle() {
+        return getThrottle(rightStick);
+    }
+    
+    public double getThirdThrottle() {
+        return getThrottle(thirdStick);
+    }
+    public double getThrottle(Joystick stick) {
+        return -(stick.getRawAxis(3) + 1)/2;
+        
     }
 
 }

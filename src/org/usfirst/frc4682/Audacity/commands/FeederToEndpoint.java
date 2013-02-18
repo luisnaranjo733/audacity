@@ -23,8 +23,7 @@ public class FeederToEndpoint extends CommandBase {
         // feeder.atEndLimit() should always be false at first
         System.out.print("Feeder at end limit? " + feeder.atEndLimit() + "\n");
         notifyExecute = true;
-        // shooter.rampUpBothWheels(); // should stay at max
-        shooter.setBothWheels(-1.0);
+        // shooter.setBothWheels(-1.0);
     }
 
     // Called repeatedly when this Command is scheduled to run

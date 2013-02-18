@@ -19,18 +19,21 @@ public class TuneShooter extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        shooter.setLeftWheel(oi.getRightThrottle());
-        shooter.setRightWheel(oi.getRightThrottle());
+        shooter.setLeftWheel(oi.getThirdThrottle());
+        shooter.setRightWheel(oi.getThirdThrottle());
         //System.out.print("Wheel speed: " + oi.getRightThrottle());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        System.out.print("Button: " + oi.thirdStick.getRawButton(2) + "\n");
+        return !oi.thirdStick.getRawButton(2);
     }
 
     // Called once after isFinished returns true
     protected void end() {
+        shooter.stopBothWheels();
+        System.out.print("Stopping both shooter wheels\n");
     }
 
     // Called when another command which requires one or more of the same

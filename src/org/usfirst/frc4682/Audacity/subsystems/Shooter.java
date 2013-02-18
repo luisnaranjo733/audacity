@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.SpeedController;
 import org.usfirst.frc4682.Audacity.RobotMap;
-import org.usfirst.frc4682.Audacity.commands.ConstantShooter;
+import org.usfirst.frc4682.Audacity.commands.TuneShooter;
 /**
  *
  * @author luis
@@ -22,7 +22,7 @@ public class Shooter extends Subsystem {
 
     private double incrementer = 0.005;
     public void initDefaultCommand() {
-        // setDefaultCommand(new ConstantShooter());
+        //setDefaultCommand(new TuneShooter());
     }
     
     public void toggleEnabled () {

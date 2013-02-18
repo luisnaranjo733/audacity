@@ -42,13 +42,11 @@ public class FeederToStartpoint extends CommandBase {
     protected void end() {
         feeder.stop();
         System.out.print("Stopped feeder wheel\n");
-        feeder.setSpeed(-RobotMap.feederSpeed);
+        feeder.setSpeed(-RobotMap.feederSpeed); // bounce back a bit
         Timer.delay(0.05);
         feeder.stop();
         System.out.print("Turned off both shooter wheels.\n");
         System.out.print("Feeder to startpoint command is finished.\n");
-        //Timer.delay(1);
-        shooter.stopBothWheels();
     }
 
     // Called when another command which requires one or more of the same

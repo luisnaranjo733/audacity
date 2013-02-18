@@ -19,14 +19,16 @@ public class TankDrive extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
         System.out.print("Starting tank drive...\n");
-        System.out.print("Initial throttle speed: " + oi.getRightThrottle() + "\n");
+        System.out.print("Initial throttle speed: " + oi.getSecondThrottle() + "\n");
     }
     
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        leftThrottle = oi.leftStick.getY() * oi.getRightThrottle();
-        rightThrottle = oi.rightStick.getY() * oi.getRightThrottle();
+        // TODO: Setup 0 < Right throttle < 1
+        // Reduce speed by half when turning
+        leftThrottle = oi.leftStick.getY() * oi.getSecondThrottle(); // 
+        rightThrottle = oi.rightStick.getY() * oi.getSecondThrottle();
         driveTrain.tankDrive(leftThrottle, rightThrottle);
     }
 

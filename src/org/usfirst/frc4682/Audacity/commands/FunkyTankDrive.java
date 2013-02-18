@@ -19,7 +19,7 @@ public class FunkyTankDrive extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
         System.out.print("Starting funky tank drive...\n");
-        System.out.print("Initial throttle speed: " + oi.getRightThrottle() + "\n");
+        System.out.print("Initial throttle speed: " + oi.getSecondThrottle() + "\n");
     }
 
     // Called repeatedly when this Command is scheduled to run
