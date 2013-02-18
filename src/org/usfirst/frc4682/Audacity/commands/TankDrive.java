@@ -30,8 +30,9 @@ public class TankDrive extends CommandBase {
         double leftSpeed = oi.leftStick.getY() * oi.getSecondThrottle(); // 
         double rightSpeed = oi.rightStick.getY() * oi.getSecondThrottle();
         driveTrain.tankDrive(leftSpeed, rightSpeed);
-        out(2, "Left drive: " + leftSpeed);
-        out(3, "Right drive: " + rightSpeed);
+        out(2, "Left drive: " + oi.leftStick.getY());
+        out(3, "Right drive: " + oi.rightStick.getY());
+        out(4, "Tank reductor: " + oi.getSecondThrottle());
        //System.out.print("Reduction throttle: " + oi.getSecondThrottle() + "\n");
         //System.out.print("Right y: " + oi.rightStick.getY());
     }
