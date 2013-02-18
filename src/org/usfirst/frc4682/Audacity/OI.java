@@ -37,4 +37,5 @@ public class OI {
     public double getRightThrottle() {
         return -(rightStick.getRawAxis(3) + 1)/2;
     }
+
 }

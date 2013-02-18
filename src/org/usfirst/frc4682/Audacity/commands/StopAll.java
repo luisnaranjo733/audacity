@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class StopAll extends CommandGroup {
     
     public StopAll() { // these commands run concurrently
-        addParallel(new StopFeeder());
+        //addParallel(new StopFeeder());
         addParallel(new StopShooter());
         addParallel(new StopDrive());
     }

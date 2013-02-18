@@ -20,7 +20,7 @@ public class Shooter extends Subsystem {
     SpeedController rightTalon = new Talon(RobotMap.rightShooterPort);
     private boolean enabled = true;
 
-    private double incrementer = 0.05;
+    private double incrementer = 0.005;
     public void initDefaultCommand() {
         // setDefaultCommand(new ConstantShooter());
     }
@@ -65,11 +65,11 @@ public class Shooter extends Subsystem {
         stopRightWheel();
     }
     
-    public void rampUpBothWheels(double maxSpeed) {
+    public void rampUpBothWheels() {
         double counter = 0.1;
-        while (counter < maxSpeed) {
+        while (counter < RobotMap.feederSpeed) {
             counter += incrementer;
-            setBothWheels(counter);
+            setBothWheels(-counter);
         }
     }
     

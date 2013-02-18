@@ -23,7 +23,8 @@ public class FeederToEndpoint extends CommandBase {
         // feeder.atEndLimit() should always be false at first
         System.out.print("Feeder at end limit? " + feeder.atEndLimit() + "\n");
         notifyExecute = true;
-        shooter.rampUpBothWheels(RobotMap.shooterSpeed); // should stay at max
+        // shooter.rampUpBothWheels(); // should stay at max
+        shooter.setBothWheels(-1.0);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -32,7 +33,7 @@ public class FeederToEndpoint extends CommandBase {
             System.out.print("Beginning to drive forward\n");
             notifyExecute = false;
         }
-        feeder.setSpeed(RobotMap.feederSpeed);
+        feeder.setSpeed(-RobotMap.feederSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
