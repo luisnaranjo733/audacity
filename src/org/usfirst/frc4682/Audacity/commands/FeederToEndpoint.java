@@ -35,7 +35,7 @@ public class FeederToEndpoint extends CommandBase {
         // feeder.setSpeed(-RobotMap.feederSpeed);
         double feederSpeed = -(oi.getFirstThrottle() + RobotMap.feederSpeed);
         // todo: lop 1.4 off to 1.0 here
-        
+        out(4, "Feeder speed: " + feederSpeed);
         if (oi.thirdStick.getRawButton(2) == true) {
             feeder.setSpeed(feederSpeed);
         }

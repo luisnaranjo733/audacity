@@ -36,12 +36,12 @@ public class DriveTrain extends Subsystem {
     }
     
     public void tankDrive(double leftSpeed, double rightSpeed) {
-        if (enabled = true) {
-            drive.tankDrive(leftSpeed, rightSpeed);
+        if (enabled == false) {
+            leftSpeed = 0;
+            rightSpeed = 0;
         }
-        else {
-            drive.tankDrive(0.0, 0.0);
-        }
+        drive.tankDrive(leftSpeed, rightSpeed);
+
     }
     
     public void stopLeftMotor() {

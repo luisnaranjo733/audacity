@@ -27,9 +27,11 @@ public class TankDrive extends CommandBase {
     protected void execute() {
         // TODO: Setup 0 < Right throttle < 1
         // Reduce speed by half when turning
-        leftThrottle = oi.leftStick.getY() * oi.getSecondThrottle(); // 
-        rightThrottle = oi.rightStick.getY() * oi.getSecondThrottle();
-        driveTrain.tankDrive(leftThrottle, rightThrottle);
+        double leftSpeed = oi.leftStick.getY() * oi.getSecondThrottle(); // 
+        double rightSpeed = oi.rightStick.getY() * oi.getSecondThrottle();
+        driveTrain.tankDrive(leftSpeed, rightSpeed);
+        out(2, "Left drive: " + leftSpeed);
+        out(3, "Right drive: " + rightSpeed);
        //System.out.print("Reduction throttle: " + oi.getSecondThrottle() + "\n");
         //System.out.print("Right y: " + oi.rightStick.getY());
     }
