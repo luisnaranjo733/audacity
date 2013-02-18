@@ -20,5 +20,7 @@ public class RobotMap {
     public static final int endLimitSwitchPort = 2;
     
     // constants
-    public static final double feederSpeed = 0.3;
+    public static final double feederSpeed = 0.5;
+    
+    // oi
 }

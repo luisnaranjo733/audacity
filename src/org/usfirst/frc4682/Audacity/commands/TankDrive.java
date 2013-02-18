@@ -19,16 +19,13 @@ public class TankDrive extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
         System.out.print("Starting tank drive...\n");
+        System.out.print("Initial throttle speed: " + oi.getRightThrottle() + "\n");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        leftThrottle = oi.leftStick.getY();
-        rightThrottle = oi.rightStick.getY();
-        if (oi.leftStick.getRawButton(4) == true || oi.rightStick.getRawButton(4) == true) {
-            leftThrottle *= 0.40;
-            rightThrottle *= 0.40;
-        }
+        leftThrottle = oi.leftStick.getY() * oi.getRightThrottle();
+        rightThrottle = oi.rightStick.getY() * oi.getRightThrottle();
         driveTrain.tankDrive(leftThrottle, rightThrottle);
     }
 
@@ -39,11 +36,11 @@ public class TankDrive extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-        driveTrain.stopBothMotors();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        System.out.print("Tank Drive interrupted!\n");
     }
 }

@@ -21,6 +21,7 @@ public class StopDrive extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         driveTrain.stopBothMotors();
+        driveTrain.toggleEnabled();
         stopped = true;
     }
 

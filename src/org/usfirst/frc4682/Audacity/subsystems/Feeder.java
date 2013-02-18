@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.DigitalInput;
 import org.usfirst.frc4682.Audacity.RobotMap;
-import org.usfirst.frc4682.Audacity.commands.TestSwitches;
 /**
  *
  * @author luis
@@ -14,9 +13,21 @@ public class Feeder extends Subsystem {
     SpeedController feeder = new Talon(RobotMap.FeederPort);
     DigitalInput startLimit = new DigitalInput(RobotMap.startLimitSwitchPort);
     DigitalInput endLimit = new DigitalInput(RobotMap.endLimitSwitchPort);
+    
+    private boolean enabled = true;
 
     public void initDefaultCommand() {
         //setDefaultCommand(new TestSwitches());
+    }
+    
+    public void toggleEnabled() {
+        enabled = !enabled;
+        if (enabled == true) {
+            System.out.print("Enabled the feeder.\n");
+        }
+        else {
+            System.out.print("Disabled the feeder.\n");
+        }
     }
     
     public boolean atEndLimit() { // Normally open limit switch
@@ -30,8 +41,16 @@ public class Feeder extends Subsystem {
     }
     
     public void setSpeed(double speed) {
-        feeder.set(speed);
-        //System.out.print("Set feeder wheel to: " + speed + "\n");
+        if (enabled == true) {
+            feeder.set(speed);
+        }
+        else {
+            stop();
+        }
+    }
+    
+    public void stop() {
+        feeder.set(0.0);
     }
     
 }

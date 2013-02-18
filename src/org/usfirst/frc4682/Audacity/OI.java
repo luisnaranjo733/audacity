@@ -16,18 +16,12 @@ public class OI {
 
     Button leftButton2 = new JoystickButton(leftStick, 2);
     Button rightButton2 = new JoystickButton(rightStick, 2);
-
-    Button leftButton3 = new JoystickButton(leftStick, 3);
-    Button rightButton3 = new JoystickButton(rightStick, 3);
     
     Button leftButton1 = new JoystickButton(leftStick, 1);
     Button rightButton1 = new JoystickButton(rightStick, 1);
     public OI() {
-      leftButton2.whileHeld(new StopAll());
-      rightButton2.whileHeld(new StopAll());
-        
-        leftButton3.whenPressed(new TuneShooter()); // maybe share an instance
-        rightButton3.whenPressed(new TuneShooter());
+        leftButton2.whileHeld(new StopAll());
+        rightButton2.whileHeld(new StopAll());
         
         leftButton1.whenPressed(new Feed());
         rightButton1.whenPressed(new Feed());

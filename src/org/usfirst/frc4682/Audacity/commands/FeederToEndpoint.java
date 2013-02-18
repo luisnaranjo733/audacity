@@ -31,8 +31,7 @@ public class FeederToEndpoint extends CommandBase {
             System.out.print("Beginning to drive forward\n");
             notifyExecute = false;
         }
-        //feeder.setSpeed(-RobotMap.feederSpeed);
-        feeder.setSpeed(oi.getLeftThrottle());
+        feeder.setSpeed(RobotMap.feederSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -45,7 +44,7 @@ public class FeederToEndpoint extends CommandBase {
     // Called once after isFinished returns true
     protected void end() {
         System.out.print("Feeder to endpoint command is finished.\n");
-        feeder.setSpeed(0.0);
+        feeder.stop();
         System.out.print("Turned off feeder wheel\n");
     }
 

@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.SpeedController;
 import org.usfirst.frc4682.Audacity.RobotMap;
-import org.usfirst.frc4682.Audacity.commands.TuneShooter;
+import org.usfirst.frc4682.Audacity.commands.ConstantShooter;
 /**
  *
  * @author luis
@@ -21,7 +21,7 @@ public class Shooter extends Subsystem {
     private boolean enabled = true;
 
     public void initDefaultCommand() {
-        setDefaultCommand(new TuneShooter());
+        setDefaultCommand(new ConstantShooter());
     }
     
     public void toggleEnabled () {
@@ -46,9 +46,9 @@ public class Shooter extends Subsystem {
         }
     }
     
-    public void setBothWheelSpeeds(double left, double right) {
-        setLeftWheel(left);
-        setRightWheel(right);
+    public void setBothWheels(double speed) {
+        setLeftWheel(speed);
+        setRightWheel(speed);
     }
     
     public void stopLeftWheel() {

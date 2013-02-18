@@ -9,7 +9,7 @@ package org.usfirst.frc4682.Audacity.commands;
  * @author luis
  */
 public class StopFeeder extends CommandBase {
-    public boolean stopped = false;
+    private boolean stopped;
     
     public StopFeeder() {
         requires(feeder);
@@ -17,17 +17,18 @@ public class StopFeeder extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        stopped = false;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        feeder.setSpeed(0.0);
+        feeder.toggleEnabled();
         stopped = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return stopped;
+        return stopped; // only runss once
     }
 
     // Called once after isFinished returns true

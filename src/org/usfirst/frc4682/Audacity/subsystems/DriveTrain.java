@@ -4,9 +4,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.GenericHID;
 import org.usfirst.frc4682.Audacity.RobotMap;
-import org.usfirst.frc4682.Audacity.commands.ArcadeDrive;
+import org.usfirst.frc4682.Audacity.commands.TankDrive;
 /**
  *
  * @author luis
@@ -19,11 +18,11 @@ public class DriveTrain extends Subsystem {
     private boolean enabled = true;
     
     public DriveTrain() {
-       drive.setSafetyEnabled(false);
+       drive.setSafetyEnabled(true);
     }
 
     public void initDefaultCommand() {
-        setDefaultCommand(new ArcadeDrive());
+        setDefaultCommand(new TankDrive());
     }
 
     public void toggleEnabled() {
@@ -35,16 +34,14 @@ public class DriveTrain extends Subsystem {
             System.out.print("Disabled Drive Train.\n");
         }
     }
-    public void tankDrive(GenericHID leftJoy, GenericHID rightJoy){
-        drive.tankDrive(leftJoy, rightJoy);
-    }
     
     public void tankDrive(double leftSpeed, double rightSpeed) {
-        drive.tankDrive(leftSpeed, rightSpeed);
-    }
-    
-    public void arcadeDrive(GenericHID stick){
-        drive.arcadeDrive(stick);
+        if (enabled = true) {
+            drive.tankDrive(leftSpeed, rightSpeed);
+        }
+        else {
+            drive.tankDrive(0.0, 0.0);
+        }
     }
     
     public void stopLeftMotor() {
