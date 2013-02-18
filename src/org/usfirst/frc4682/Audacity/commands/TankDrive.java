@@ -9,6 +9,8 @@ package org.usfirst.frc4682.Audacity.commands;
  * @author luis
  */
 public class TankDrive extends CommandBase {
+    double leftThrottle;
+    double rightThrottle;
     
     public TankDrive() {
         requires(driveTrain);
@@ -21,7 +23,13 @@ public class TankDrive extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        driveTrain.tankDrive(oi.leftStick, oi.rightStick);
+        leftThrottle = oi.leftStick.getY();
+        rightThrottle = oi.rightStick.getY();
+        if (oi.leftStick.getRawButton(4) == true || oi.rightStick.getRawButton(4) == true) {
+            leftThrottle *= 0.40;
+            rightThrottle *= 0.40;
+        }
+        driveTrain.tankDrive(leftThrottle, rightThrottle);
     }
 
     // Make this return true when this Command no longer needs to run execute()
