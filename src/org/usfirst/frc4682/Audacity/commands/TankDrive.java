@@ -25,16 +25,12 @@ public class TankDrive extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        // TODO: Setup 0 < Right throttle < 1
         // Reduce speed by half when turning
         double leftSpeed = oi.leftStick.getY() * oi.getSecondThrottle(); // 
         double rightSpeed = oi.rightStick.getY() * oi.getSecondThrottle();
         driveTrain.tankDrive(leftSpeed, rightSpeed);
-        out(2, "Left drive: " + oi.leftStick.getY());
-        out(3, "Right drive: " + oi.rightStick.getY());
-        out(4, "Tank reductor: " + oi.getSecondThrottle());
-       //System.out.print("Reduction throttle: " + oi.getSecondThrottle() + "\n");
-        //System.out.print("Right y: " + oi.rightStick.getY());
+        out(1, "Drive Train state: " + driveTrain.state());
+        out(6, "Drive Train speed: " + driveTrain.getLeftSpeed());
     }
 
     // Make this return true when this Command no longer needs to run execute()

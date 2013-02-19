@@ -16,7 +16,7 @@ public class Feeder extends BaseSubsystem {
     DigitalInput endLimit = new DigitalInput(RobotMap.endLimitSwitchPort);
 
     public void initDefaultCommand() {
-        //setDefaultCommand(new TestSwitches());
+        //setDefaultCommand(new UpdateFeederOnLCD());
     }
     
     public boolean atEndLimit() { // Normally open limit switch
@@ -35,6 +35,10 @@ public class Feeder extends BaseSubsystem {
         }
         feeder.set(speed);
         System.out.print("Feeder state: " + enabled + "\n");
+    }
+    
+    public double getSpeed() {
+        return feeder.get();
     }
     
     public void stop() { // this is used in more than one place

@@ -25,4 +25,7 @@ public abstract class BaseSubsystem extends Subsystem {
         System.out.print("Disabled the " + name + ".\n");
     }
 
+    public boolean state() {
+        return enabled;
+    }
 }

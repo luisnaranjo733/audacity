@@ -10,32 +10,20 @@ import org.usfirst.frc4682.Audacity.RobotMap;
  * @author luis
  */
 public class FeederToEndpoint extends CommandBase {
-    private boolean notifyExecute;
-    
     
     public FeederToEndpoint() {
         requires(feeder);
     }
 
-    // Called just before this Command runs the first time
     protected void initialize() {
-        System.out.print("Initializing Feeder to End point command\n");
-        // feeder.atEndLimit() should always be false at first
-        System.out.print("Feeder at end limit? " + feeder.atEndLimit() + "\n");
-        notifyExecute = true;
-        // shooter.setBothWheels(-1.0);
     }
 
-    // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (notifyExecute == true) {
-            System.out.print("Beginning to drive forward\n");
-            notifyExecute = false;
-        }
         // feeder.setSpeed(-RobotMap.feederSpeed);
         double feederSpeed = -(oi.getFirstThrottle() + RobotMap.feederSpeed);
         // todo: lop 1.4 off to 1.0 here
-        out(4, "Feeder speed: " + feederSpeed);
+        out(4, "Feeder speed: " + feeder.getSpeed());
+        out(2, "Feeder state: " + feeder.state());
         if (oi.thirdStick.getRawButton(2) == true) {
             feeder.setSpeed(feederSpeed);
         }

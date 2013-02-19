@@ -18,15 +18,14 @@ public class Shooter extends BaseSubsystem {
     SpeedController rightTalon = new Talon(RobotMap.rightShooterPort);
 
     public void initDefaultCommand() {
-        //setDefaultCommand(new TuneShooter());
+        
     }
-    
     public void setLeftWheel(double speed) {
-        if (enabled = false) {
+        if (enabled == false) {
             speed = 0;
         }
         leftTalon.set(speed);
-        System.out.print("Shooter state: " + enabled + "\n");
+        //System.out.print("Shooter state: " + enabled + "\n");
     }
     
     public void setRightWheel(double speed) {
@@ -52,6 +51,14 @@ public class Shooter extends BaseSubsystem {
     public void stopBothWheels() {
         stopLeftWheel();
         stopRightWheel();
+    }
+    
+    public double getLeftWheel() {
+        return leftTalon.get();
+    }
+    
+    public double getRightWheel() {
+        return rightTalon.get();
     }
     
 }

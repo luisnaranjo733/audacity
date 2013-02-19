@@ -20,10 +20,12 @@ public class TuneShooter extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         double shooterSpeed = -oi.getThirdThrottle();
-        shooter.setLeftWheel(shooterSpeed);
-        shooter.setRightWheel(shooterSpeed);
-        out(1, "Shooter speed: " + shooterSpeed);
-        System.out.print("Shooter state: " + shooter.enabled);
+        if (shooter.enabled == true) {
+            shooter.setLeftWheel(shooterSpeed);
+            shooter.setRightWheel(shooterSpeed);
+            out(3, "Shooter state: " + shooter.state());
+            out(5, "Shooter speed: " + shooter.getLeftWheel()); // same for both
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
