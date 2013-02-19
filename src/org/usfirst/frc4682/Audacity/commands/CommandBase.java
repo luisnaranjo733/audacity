@@ -21,6 +21,7 @@ public abstract class CommandBase extends Command {
     public static Feeder feeder = new Feeder();
     
     DriverStationLCD message = DriverStationLCD.getInstance();
+    public boolean enabled = true;
 
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely

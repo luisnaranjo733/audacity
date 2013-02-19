@@ -25,12 +25,17 @@ public class FeederToStartpoint extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (notifyExecute == true) {
+        if (notifyExecute == true && enabled == true) {
             System.out.print("Beginning to drive backwards\n");
             notifyExecute = false;
         }
         //feeder.setSpeed(RobotMap.feederSpeed);
-        feeder.setSpeed(RobotMap.feederSpeed);
+        if (enabled == true) {
+            feeder.setSpeed(RobotMap.feederSpeed);
+        }
+        else {
+            feeder.setSpeed(0.0);
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -42,11 +47,13 @@ public class FeederToStartpoint extends CommandBase {
     protected void end() {
         feeder.stop();
         System.out.print("Stopped feeder wheel\n");
-        feeder.setSpeed(-RobotMap.feederSpeed); // bounce back a bit
-        Timer.delay(0.05);
-        feeder.stop();
-        System.out.print("Turned off both shooter wheels.\n");
-        System.out.print("Feeder to startpoint command is finished.\n");
+        if (enabled == true) {
+            feeder.setSpeed(-RobotMap.feederSpeed); // bounce back a bit
+            Timer.delay(0.05);
+            feeder.stop();
+            System.out.print("Turned off both shooter wheels.\n");
+            System.out.print("Feeder to startpoint command is finished.\n");
+        }
     }
 
     // Called when another command which requires one or more of the same

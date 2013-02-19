@@ -28,7 +28,7 @@ public class FeederToEndpoint extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (notifyExecute == true) {
+        if (notifyExecute == true && enabled == true) {
             System.out.print("Beginning to drive forward\n");
             notifyExecute = false;
         }
@@ -36,7 +36,7 @@ public class FeederToEndpoint extends CommandBase {
         double feederSpeed = -(oi.getFirstThrottle() + RobotMap.feederSpeed);
         // todo: lop 1.4 off to 1.0 here
         out(4, "Feeder speed: " + feederSpeed);
-        if (oi.thirdStick.getRawButton(2) == true) {
+        if (oi.thirdStick.getRawButton(2) == true && enabled == true) {
             feeder.setSpeed(feederSpeed);
         }
         else {

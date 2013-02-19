@@ -4,6 +4,7 @@
  */
 package org.usfirst.frc4682.Audacity.subsystems;
 
+import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.SpeedController;
 import org.usfirst.frc4682.Audacity.RobotMap;
@@ -13,7 +14,7 @@ import org.usfirst.frc4682.Audacity.RobotMap;
  */
 
 // This subsystem should work.
-public class Shooter extends BaseSubsystem {
+public class Shooter extends Subsystem {
     SpeedController leftTalon = new Talon(RobotMap.leftShooterPort);
     SpeedController rightTalon = new Talon(RobotMap.rightShooterPort);
 
@@ -22,17 +23,10 @@ public class Shooter extends BaseSubsystem {
     }
     
     public void setLeftWheel(double speed) {
-        if (enabled = false) {
-            speed = 0;
-        }
         leftTalon.set(speed);
-        System.out.print("Shooter state: " + enabled + "\n");
     }
     
     public void setRightWheel(double speed) {
-        if (enabled == false) {
-            speed = 0;
-        }
         rightTalon.set(speed);
     }
     

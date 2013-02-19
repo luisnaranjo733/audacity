@@ -29,7 +29,9 @@ public class TankDrive extends CommandBase {
         // Reduce speed by half when turning
         double leftSpeed = oi.leftStick.getY() * oi.getSecondThrottle(); // 
         double rightSpeed = oi.rightStick.getY() * oi.getSecondThrottle();
-        driveTrain.tankDrive(leftSpeed, rightSpeed);
+        if (enabled == true) {
+            driveTrain.tankDrive(leftSpeed, rightSpeed);
+        }
         out(2, "Left drive: " + oi.leftStick.getY());
         out(3, "Right drive: " + oi.rightStick.getY());
         out(4, "Tank reductor: " + oi.getSecondThrottle());

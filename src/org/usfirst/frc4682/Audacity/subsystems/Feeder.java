@@ -1,5 +1,6 @@
 package org.usfirst.frc4682.Audacity.subsystems;
 
+import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -10,7 +11,7 @@ import org.usfirst.frc4682.Audacity.RobotMap;
  */
 
 // this subsystem should work
-public class Feeder extends BaseSubsystem {
+public class Feeder extends Subsystem {
     SpeedController feeder = new Talon(RobotMap.FeederPort);
     DigitalInput startLimit = new DigitalInput(RobotMap.startLimitSwitchPort);
     DigitalInput endLimit = new DigitalInput(RobotMap.endLimitSwitchPort);
@@ -30,11 +31,7 @@ public class Feeder extends BaseSubsystem {
     }
     
     public void setSpeed(double speed) {
-        if (enabled == false) {
-            speed = 0;
-        }
         feeder.set(speed);
-        System.out.print("Feeder state: " + enabled + "\n");
     }
     
     public void stop() { // this is used in more than one place
