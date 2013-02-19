@@ -8,10 +8,13 @@ package org.usfirst.frc4682.Audacity;
  */
 
 /*
+ * Fix shooting bug when enabled
  * Make drive reductor throttle start at 50
  * x axis arcade mode for tank drive from shooter joystick
  * reduce speed when turning in trank drive
+ *  button to toggle reduction on shooter stick drive from constant to stick 2 throttle
  * 
+ * when the shooter stick runs, the tank drive sticks enabled
  */
 public class RobotMap {
     

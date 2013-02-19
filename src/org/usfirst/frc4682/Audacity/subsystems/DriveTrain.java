@@ -28,6 +28,10 @@ public class DriveTrain extends BaseSubsystem {
 
     }
     
+    public void arcadeDrive(double moveValue, double rotateValue) {
+        drive.arcadeDrive(moveValue, rotateValue);
+    }
+    
     public void stopLeftMotor() {
         leftVictor.set(0.0);
     }
