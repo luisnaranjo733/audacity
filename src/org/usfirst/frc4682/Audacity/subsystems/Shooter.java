@@ -26,21 +26,17 @@ public class Shooter extends BaseSubsystem {
     }
     
     public void setLeftWheel(double speed) {
-        if (enabled == true) {
-            leftTalon.set(speed);
+        if (enabled = false) {
+            speed = 0;
         }
-        else {
-            stopLeftWheel();
-        }
+        leftTalon.set(speed);
     }
     
     public void setRightWheel(double speed) {
-        if (enabled == true) {
-            rightTalon.set(speed);
+        if (enabled == false) {
+            speed = 0;
         }
-        else {
-            stopRightWheel();
-        }
+        rightTalon.set(speed);
     }
     
     public void setBothWheels(double speed) {

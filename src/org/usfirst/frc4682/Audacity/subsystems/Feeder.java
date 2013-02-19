@@ -8,6 +8,8 @@ import org.usfirst.frc4682.Audacity.RobotMap;
  *
  * @author luis
  */
+
+// this subsystem should work
 public class Feeder extends BaseSubsystem {
     SpeedController feeder = new Talon(RobotMap.FeederPort);
     DigitalInput startLimit = new DigitalInput(RobotMap.startLimitSwitchPort);
@@ -32,12 +34,10 @@ public class Feeder extends BaseSubsystem {
     }
     
     public void setSpeed(double speed) {
-        if (enabled == true) {
-            feeder.set(speed);
+        if (enabled == false) {
+            speed = 0;
         }
-        else {
-            stop();
-        }
+        feeder.set(speed);
     }
     
     public void stop() { // this is used in more than one place
