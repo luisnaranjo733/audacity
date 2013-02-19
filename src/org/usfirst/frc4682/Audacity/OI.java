@@ -46,13 +46,13 @@ public class OI {
         secondDisableAlt.whenPressed(new StopAll());
         thirdDisableAlt.whenPressed(new StopAll());
         
-        firstEnable.whenPressed(new RestartDrive());
-        secondEnable.whenPressed(new RestartDrive());
-        thirdEnable.whenPressed(new RestartDrive());
+        firstEnable.whenPressed(new Restart());
+        secondEnable.whenPressed(new Restart());
+        thirdEnable.whenPressed(new Restart());
         
-        firstEnableAlt.whenPressed(new RestartDrive());
-        secondEnableAlt.whenPressed(new RestartDrive());
-        thirdEnableAlt.whenPressed(new RestartDrive());
+        firstEnableAlt.whenPressed(new Restart());
+        secondEnableAlt.whenPressed(new Restart());
+        thirdEnableAlt.whenPressed(new Restart());
         
     }
     
