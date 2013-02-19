@@ -21,9 +21,19 @@ public class OI {
     Button secondDisable = new JoystickButton(rightStick, 11);
     Button thirdDisable = new JoystickButton(thirdStick, 11);
     
-    Button firstDisableAlt = new JoystickButton(leftStick, 12);
-    Button secondDisableAlt = new JoystickButton(rightStick, 12);
-    Button thirdDisableAlt = new JoystickButton(thirdStick, 12);
+    Button firstDisableAlt = new JoystickButton(leftStick, 10);
+    Button secondDisableAlt = new JoystickButton(rightStick, 10);
+    Button thirdDisableAlt = new JoystickButton(thirdStick, 10);
+    
+    Button firstEnable = new JoystickButton(leftStick, 6);
+    Button secondEnable = new JoystickButton(leftStick, 6);
+    Button thirdEnable = new JoystickButton(leftStick, 6);
+    
+    Button firstEnableAlt = new JoystickButton(leftStick, 7);
+    Button secondEnableAlt = new JoystickButton(leftStick, 7);
+    Button thirdEnableAlt = new JoystickButton(leftStick, 7);
+    
+    
     public OI() {
         shootingButton.whenPressed(new TuneShooter());
         firingButton.whenPressed(new Feed());
@@ -35,6 +45,14 @@ public class OI {
         firstDisableAlt.whenPressed(new StopAll());
         secondDisableAlt.whenPressed(new StopAll());
         thirdDisableAlt.whenPressed(new StopAll());
+        
+        firstEnable.whenPressed(new RestartDrive());
+        secondEnable.whenPressed(new RestartDrive());
+        thirdEnable.whenPressed(new RestartDrive());
+        
+        firstEnableAlt.whenPressed(new RestartDrive());
+        secondEnableAlt.whenPressed(new RestartDrive());
+        thirdEnableAlt.whenPressed(new RestartDrive());
         
     }
     

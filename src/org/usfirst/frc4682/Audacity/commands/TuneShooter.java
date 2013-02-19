@@ -23,6 +23,7 @@ public class TuneShooter extends CommandBase {
         shooter.setLeftWheel(shooterSpeed);
         shooter.setRightWheel(shooterSpeed);
         out(1, "Shooter speed: " + shooterSpeed);
+        System.out.print("Shooter state: " + shooter.enabled);
     }
 
     // Make this return true when this Command no longer needs to run execute()

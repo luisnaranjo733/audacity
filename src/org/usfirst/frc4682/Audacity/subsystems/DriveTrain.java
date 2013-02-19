@@ -1,6 +1,5 @@
 package org.usfirst.frc4682.Audacity.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -10,30 +9,16 @@ import org.usfirst.frc4682.Audacity.commands.TankDrive;
  *
  * @author luis
  */
-public class DriveTrain extends Subsystem {
+public class DriveTrain extends BaseSubsystem {
     
     SpeedController leftVictor = new Victor(RobotMap.leftDrivePort);
     SpeedController rightVictor = new Victor(RobotMap.rightDrivePort);
     RobotDrive drive = new RobotDrive(leftVictor, rightVictor);
-    private boolean enabled = true;
-    
-    public DriveTrain() {
-       drive.setSafetyEnabled(true);
-    }
 
     public void initDefaultCommand() {
         setDefaultCommand(new TankDrive());
     }
 
-    public void enable() {
-        enabled = true;
-        System.out.print("Enabled the Drive Train.\n");
-    }
-    
-    public void disable() {
-        enabled = false;
-        System.out.print("Disabled the Drive Train.\n");
-    }
     public void tankDrive(double leftSpeed, double rightSpeed) {
         if (enabled == false) {
             leftSpeed = 0;
