@@ -6,6 +6,13 @@ package org.usfirst.frc4682.Audacity;
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
  */
+
+/*
+ * Make drive reductor throttle start at 50
+ * x axis arcade mode for tank drive from shooter joystick
+ * reduce speed when turning in trank drive
+ * 
+ */
 public class RobotMap {
     
     // PWM ports

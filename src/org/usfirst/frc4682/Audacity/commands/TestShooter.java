@@ -20,8 +20,7 @@ public class TestShooter extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         double shooterSpeed = -oi.getThirdThrottle();
-        shooter.setLeftWheel(shooterSpeed);
-        shooter.setRightWheel(shooterSpeed);
+        shooter.setSpeed(shooterSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -31,7 +30,7 @@ public class TestShooter extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-        shooter.stopBothWheels();
+        shooter.stop();
         System.out.print("Stopping both shooter wheels\n");
     }
 

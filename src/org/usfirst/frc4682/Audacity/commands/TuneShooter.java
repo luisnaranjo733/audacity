@@ -21,10 +21,9 @@ public class TuneShooter extends CommandBase {
     protected void execute() {
         double shooterSpeed = -oi.getThirdThrottle();
         if (shooter.enabled == true) {
-            shooter.setLeftWheel(shooterSpeed);
-            shooter.setRightWheel(shooterSpeed);
+            shooter.setSpeed(shooterSpeed);
             out(3, "Shooter state: " + shooter.state());
-            out(5, "Shooter speed: " + shooter.getLeftWheel()); // same for both
+            out(5, "Shooter speed: " + shooter.get()); // same for both
         }
     }
 
@@ -35,7 +34,7 @@ public class TuneShooter extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-        shooter.stopBothWheels();
+        shooter.stop();
         System.out.print("Stopping both shooter wheels\n");
     }
 
