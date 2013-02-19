@@ -5,6 +5,8 @@ package org.usfirst.frc4682.Audacity.commands;
  */
 
 // this should work
+// if it doesn't, set this command to never end
+// replace RestartShooter with TuneShooter or something in Restart() group
 public class StopShooter extends CommandBase {
     boolean stopped = false;
     
