@@ -9,11 +9,10 @@ package org.usfirst.frc4682.Audacity.commands;
  * @author luis
  */
 public class RestartDrive extends CommandBase {
-    private boolean notifyExecute;
     private boolean enabled = false;
     
     public RestartDrive() {
-        requires(feeder);
+        //requires(driveTrain);
     }
 
     // Called just before this Command runs the first time

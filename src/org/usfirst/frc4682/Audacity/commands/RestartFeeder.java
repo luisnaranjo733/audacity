@@ -8,32 +8,31 @@ package org.usfirst.frc4682.Audacity.commands;
  *
  * @author luis
  */
-// this should work
-public class StopDrive extends CommandBase {
-    public boolean stopped = false;
-    public StopDrive() {
-        requires(driveTrain);
+public class RestartFeeder extends CommandBase {
+    private boolean enabled = false;
+    
+    public RestartFeeder() {
+        //requires(feeder);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        System.out.print("Restarting the Drive Train");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        driveTrain.disable();
-        driveTrain.stopBothMotors();
-        stopped = true;
+        feeder.enable();
+        enabled = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return stopped;
+        return enabled;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-        System.out.print("Stopped the drive wheels\n");
     }
 
     // Called when another command which requires one or more of the same

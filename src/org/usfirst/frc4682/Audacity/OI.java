@@ -26,12 +26,12 @@ public class OI {
     Button thirdDisableAlt = new JoystickButton(thirdStick, 10);
     
     Button firstEnable = new JoystickButton(leftStick, 6);
-    Button secondEnable = new JoystickButton(leftStick, 6);
-    Button thirdEnable = new JoystickButton(leftStick, 6);
+    Button secondEnable = new JoystickButton(rightStick, 6);
+    Button thirdEnable = new JoystickButton(thirdStick, 6);
     
     Button firstEnableAlt = new JoystickButton(leftStick, 7);
-    Button secondEnableAlt = new JoystickButton(leftStick, 7);
-    Button thirdEnableAlt = new JoystickButton(leftStick, 7);
+    Button secondEnableAlt = new JoystickButton(rightStick, 7);
+    Button thirdEnableAlt = new JoystickButton(thirdStick, 7);
     
     
     public OI() {

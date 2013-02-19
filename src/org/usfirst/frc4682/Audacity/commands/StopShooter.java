@@ -4,6 +4,7 @@ package org.usfirst.frc4682.Audacity.commands;
  * This sets the shooter wheel speeds to 0 once.
  */
 
+// this should work
 public class StopShooter extends CommandBase {
     boolean stopped = false;
     
@@ -17,9 +18,9 @@ public class StopShooter extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        shooter.disable();
         shooter.stopBothWheels();
         stopped = true;
-        shooter.disable();
     }
 
     // Make this return true when this Command no longer needs to run execute()

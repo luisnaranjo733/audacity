@@ -13,5 +13,7 @@ import org.usfirst.frc4682.Audacity.commands.*;
 public class Restart extends CommandGroup{
     public Restart() {
         addParallel(new RestartDrive());
+        addParallel(new RestartFeeder());
+        addParallel(new RestartShooter());
     }
 }

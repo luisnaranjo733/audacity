@@ -16,10 +16,6 @@ import org.usfirst.frc4682.Audacity.RobotMap;
 public class Shooter extends BaseSubsystem {
     SpeedController leftTalon = new Talon(RobotMap.leftShooterPort);
     SpeedController rightTalon = new Talon(RobotMap.rightShooterPort);
-    
-    public Shooter() {
-        name = "shooter";
-    }
 
     public void initDefaultCommand() {
         //setDefaultCommand(new TuneShooter());

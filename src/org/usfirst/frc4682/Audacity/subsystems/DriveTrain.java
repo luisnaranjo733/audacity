@@ -14,10 +14,6 @@ public class DriveTrain extends BaseSubsystem {
     SpeedController leftVictor = new Victor(RobotMap.leftDrivePort);
     SpeedController rightVictor = new Victor(RobotMap.rightDrivePort);
     RobotDrive drive = new RobotDrive(leftVictor, rightVictor);
-    
-    public DriveTrain() {
-        name = "drive train";
-    }
 
     public void initDefaultCommand() {
         setDefaultCommand(new TankDrive());

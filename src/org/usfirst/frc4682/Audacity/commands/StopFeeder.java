@@ -8,6 +8,8 @@ package org.usfirst.frc4682.Audacity.commands;
  *
  * @author luis
  */
+
+// this should work
 public class StopFeeder extends CommandBase {
     private boolean stopped;
     

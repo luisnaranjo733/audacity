@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 // HIGHLY EXPERIMENTAL
 public abstract class BaseSubsystem extends Subsystem {
     public boolean enabled = true;
-    public String name = "";
+    public String name;
     
     public void enable() {
         enabled = true;
