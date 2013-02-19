@@ -16,15 +16,27 @@ public class OI {
     public Joystick thirdStick = new Joystick(3);
 
     Button shootingButton = new JoystickButton(thirdStick, 2);
-    
     Button firingButton = new JoystickButton(thirdStick, 1);
+    
+    Button firstDisable = new JoystickButton(leftStick, 11);
+    Button secondDisable = new JoystickButton(rightStick, 11);
+    Button thirdDisable = new JoystickButton(thirdStick, 11);
+    
+    Button firstDisableAlt = new JoystickButton(leftStick, 12);
+    Button secondDisableAlt = new JoystickButton(rightStick, 12);
+    Button thirdDisableAlt = new JoystickButton(thirdStick, 12);
     public OI() {
         shootingButton.whenPressed(new TuneShooter());
-        
         firingButton.whenPressed(new Feed());
-  //      SmartDashboard.putData("StopShooter", new StopShooter());
-    //    SmartDashboard.putData("TuneShooter", new TuneShooter());
-      //  SmartDashboard.putData("Feed", new Feed());
+        
+        firstDisable.whenPressed(new StopAll());
+        secondDisable.whenPressed(new StopAll());
+        thirdDisable.whenPressed(new StopAll());
+        
+        firstDisableAlt.whenPressed(new StopAll());
+        secondDisableAlt.whenPressed(new StopAll());
+        thirdDisableAlt.whenPressed(new StopAll());
+        
     }
     
     public double getFirstThrottle() { // returns 0 < double < 1
