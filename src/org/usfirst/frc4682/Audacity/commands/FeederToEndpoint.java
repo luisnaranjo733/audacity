@@ -41,7 +41,7 @@ public class FeederToEndpoint extends CommandBase {
         }
         else {
             feeder.setSpeed(0.0);
-            System.out.print("I wont shoot till you turn the wheels on!\n");
+            //System.out.print("I wont shoot till you turn the wheels on!\n");
         }
         //System.out.print("First throttle: " + oi.getFirstThrottle() + "\n");
         //System.out.print("Feeder speed: " + feederSpeed + "\n");

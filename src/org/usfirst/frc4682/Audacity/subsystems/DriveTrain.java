@@ -25,6 +25,7 @@ public class DriveTrain extends BaseSubsystem {
             rightSpeed = 0;
         }
         drive.tankDrive(leftSpeed, rightSpeed);
+        System.out.print("Drive state: " + enabled + "\n");
 
     }
     

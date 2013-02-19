@@ -26,6 +26,7 @@ public class Shooter extends BaseSubsystem {
             speed = 0;
         }
         leftTalon.set(speed);
+        System.out.print("Shooter state: " + enabled + "\n");
     }
     
     public void setRightWheel(double speed) {
