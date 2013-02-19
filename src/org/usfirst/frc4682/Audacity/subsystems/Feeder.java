@@ -20,14 +20,14 @@ public class Feeder extends Subsystem {
         //setDefaultCommand(new TestSwitches());
     }
     
-    public void toggleEnabled() {
-        enabled = !enabled;
-        if (enabled == true) {
-            System.out.print("Enabled the feeder.\n");
-        }
-        else {
-            System.out.print("Disabled the feeder.\n");
-        }
+    public void enable() {
+        enabled = true;
+        System.out.print("Enabled the feeder.\n");
+    }
+    
+    public void disable() {
+        enabled = false;
+        System.out.print("Disabled the feeder.\n");
     }
     
     public boolean atEndLimit() { // Normally open limit switch
@@ -49,7 +49,7 @@ public class Feeder extends Subsystem {
         }
     }
     
-    public void stop() {
+    public void stop() { // this is used in more than one place
         feeder.set(0.0);
     }
     

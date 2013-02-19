@@ -25,16 +25,15 @@ public class DriveTrain extends Subsystem {
         setDefaultCommand(new TankDrive());
     }
 
-    public void toggleEnabled() {
-        enabled = !enabled;
-        if (enabled == true) {
-            System.out.print("Enabled Drive Train.\n");
-        }
-        else {
-            System.out.print("Disabled Drive Train.\n");
-        }
+    public void enable() {
+        enabled = true;
+        System.out.print("Enabled the Drive Train.\n");
     }
     
+    public void disable() {
+        enabled = false;
+        System.out.print("Disabled the Drive Train.\n");
+    }
     public void tankDrive(double leftSpeed, double rightSpeed) {
         if (enabled == false) {
             leftSpeed = 0;

@@ -2,7 +2,6 @@ package org.usfirst.frc4682.Audacity;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Joystick;
 import org.usfirst.frc4682.Audacity.commands.*;
 

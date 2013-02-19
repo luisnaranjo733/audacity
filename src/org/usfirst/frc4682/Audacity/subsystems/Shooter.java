@@ -25,16 +25,15 @@ public class Shooter extends Subsystem {
         //setDefaultCommand(new TuneShooter());
     }
     
-    public void toggleEnabled () {
-        enabled = !enabled;
-        if (enabled == true) {
-            System.out.print("Enabled the shooter.\n");
-        }
-        else {
-            System.out.print("Disabled the shooter.\n");
-        }
+    public void enable() {
+        enabled = true;
+        System.out.print("Enabled the shooter.\n");
     }
     
+    public void disable() {
+        enabled = false;
+        System.out.print("Disabled the shooter.\n");
+    }
     public void setLeftWheel(double speed) {
         if (enabled == true) {
             leftTalon.set(speed);
@@ -63,14 +62,6 @@ public class Shooter extends Subsystem {
     public void stopBothWheels() {
         stopLeftWheel();
         stopRightWheel();
-    }
-    
-    public void rampUpBothWheels() {
-        double counter = 0.1;
-        while (counter < RobotMap.feederSpeed) {
-            counter += incrementer;
-            setBothWheels(-counter);
-        }
     }
     
 }

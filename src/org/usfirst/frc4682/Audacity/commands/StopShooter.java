@@ -19,7 +19,7 @@ public class StopShooter extends CommandBase {
     protected void execute() {
         shooter.stopBothWheels();
         stopped = true;
-        shooter.toggleEnabled();
+        shooter.disable();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -29,7 +29,6 @@ public class StopShooter extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-        System.out.print("Stopped the shooter\n");
     }
 
     // Called when another command which requires one or more of the same

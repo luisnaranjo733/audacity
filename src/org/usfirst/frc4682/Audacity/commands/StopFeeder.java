@@ -22,7 +22,7 @@ public class StopFeeder extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        feeder.toggleEnabled();
+        feeder.disable();
         feeder.stop();
         stopped = true;
     }
