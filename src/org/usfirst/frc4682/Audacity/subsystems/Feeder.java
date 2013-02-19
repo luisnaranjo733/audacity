@@ -12,6 +12,10 @@ public class Feeder extends BaseSubsystem {
     SpeedController feeder = new Talon(RobotMap.FeederPort);
     DigitalInput startLimit = new DigitalInput(RobotMap.startLimitSwitchPort);
     DigitalInput endLimit = new DigitalInput(RobotMap.endLimitSwitchPort);
+    
+    public Feeder() {
+        name = "feeder";
+    }
 
     public void initDefaultCommand() {
         //setDefaultCommand(new TestSwitches());

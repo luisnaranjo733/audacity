@@ -11,11 +11,16 @@ import org.usfirst.frc4682.Audacity.RobotMap;
  *
  * @author luis
  */
+
+// This subsystem should work.
 public class Shooter extends BaseSubsystem {
     SpeedController leftTalon = new Talon(RobotMap.leftShooterPort);
     SpeedController rightTalon = new Talon(RobotMap.rightShooterPort);
     
-    private double incrementer = 0.005;
+    public Shooter() {
+        name = "shooter";
+    }
+
     public void initDefaultCommand() {
         //setDefaultCommand(new TuneShooter());
     }
@@ -24,11 +29,17 @@ public class Shooter extends BaseSubsystem {
         if (enabled == true) {
             leftTalon.set(speed);
         }
+        else {
+            stopLeftWheel();
+        }
     }
     
     public void setRightWheel(double speed) {
-        if (enabled = true) {
+        if (enabled == true) {
             rightTalon.set(speed);
+        }
+        else {
+            stopRightWheel();
         }
     }
     
