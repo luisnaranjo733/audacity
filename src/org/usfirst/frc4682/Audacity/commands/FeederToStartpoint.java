@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Timer;
  */
 public class FeederToStartpoint extends CommandBase {
     boolean notifyExecute;
+    boolean allowed;
     
     public FeederToStartpoint() {
         requires(feeder);
@@ -21,10 +22,12 @@ public class FeederToStartpoint extends CommandBase {
         System.out.print("Initializing Feeder to Start point command.\n");
         System.out.print("Feeder at start limit? " + feeder.atStartLimit() + "\n");
         notifyExecute = true;
+        allowed = oi.thirdStick.getRawButton(2);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        allowed = oi.thirdStick.getRawButton(2);
         if (notifyExecute == true) {
             System.out.print("Beginning to drive backwards\n");
             notifyExecute = false;
@@ -35,7 +38,7 @@ public class FeederToStartpoint extends CommandBase {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return feeder.atStartLimit();
+        return feeder.atStartLimit() || !allowed;
     }
 
     // Called once after isFinished returns true

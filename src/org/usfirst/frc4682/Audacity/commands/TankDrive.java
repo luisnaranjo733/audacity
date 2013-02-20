@@ -41,8 +41,8 @@ public class TankDrive extends CommandBase {
         boolean shooterMoving = (oi.thirdStick.getX() < -0.2 || oi.thirdStick.getX() > 0.2);
         boolean shooterOverrides = (oi.leftStick.getY() < threshold && oi.rightStick.getY() < threshold);
         shooterOverrides = shooterOverrides && (oi.leftStick.getY() > -threshold && oi.rightStick.getY() > -threshold);
-        System.out.print("Shooter stick moving: " + shooterMoving + "\n");
-        System.out.print("shooter overrides: " + shooterOverrides + "\n");
+        //System.out.print("Shooter stick moving: " + shooterMoving + "\n");
+        //System.out.print("shooter overrides: " + shooterOverrides + "\n");
         if (shooterMoving == true && shooterOverrides == true){
             double reductor = oi.thirdStick.getX() * 0.6;
             driveTrain.arcadeDrive(0, reductor);

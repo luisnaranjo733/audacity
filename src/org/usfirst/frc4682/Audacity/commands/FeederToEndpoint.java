@@ -4,39 +4,42 @@
  */
 package org.usfirst.frc4682.Audacity.commands;
 import org.usfirst.frc4682.Audacity.RobotMap;
-
 /**
  *
  * @author luis
  */
 public class FeederToEndpoint extends CommandBase {
+    boolean allowed;
     
     public FeederToEndpoint() {
         requires(feeder);
     }
 
     protected void initialize() {
+        allowed = oi.thirdStick.getRawButton(2);
+        if (!allowed) {
+            System.out.print("The feeder should not run");
+            cancel();
+        }
     }
 
     protected void execute() {
-        // feeder.setSpeed(-RobotMap.feederSpeed);
         double feederSpeed = -(oi.getFirstThrottle() + RobotMap.feederSpeed);
-        // todo: lop 1.4 off to 1.0 here
-        out(4, "Feeder speed: " + feeder.getSpeed());
-        out(2, "Feeder state: " + feeder.state());
-        if (oi.thirdStick.getRawButton(2) == true) {
+        if (feederSpeed > 1.0) {
+            feederSpeed = 1.0;
+        }
+        if (feeder.enabled) {
             feeder.setSpeed(feederSpeed);
         }
         else {
             feeder.setSpeed(0.0);
-            //System.out.print("I wont shoot till you turn the wheels on!\n");
+            cancel();
         }
-        //System.out.print("First throttle: " + oi.getFirstThrottle() + "\n");
-        //System.out.print("Feeder speed: " + feederSpeed + "\n");
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+        //timer.
         return feeder.atEndLimit(); // should be false until the end limit
         // switch is hit
         

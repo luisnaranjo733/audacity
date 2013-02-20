@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package org.usfirst.frc4682.Audacity.commands;
+import org.usfirst.frc4682.Audacity.commands.TankDrive;
 
 /**
  *
@@ -24,6 +25,9 @@ public class RestartDrive extends CommandBase {
     protected void execute() {
         driveTrain.enable();
         enabled = true;
+        TankDrive tankDrive = new TankDrive();
+        tankDrive.start();
+        
     }
 
     // Make this return true when this Command no longer needs to run execute()
