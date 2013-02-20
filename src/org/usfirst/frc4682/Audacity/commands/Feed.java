@@ -21,7 +21,7 @@ public class Feed extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (oi.getButton(2, oi.thirdStick)) {
+        if (oi.getButton(2, oi.thirdStick) && feeder.enabled) {
             new FeederToEndpoint().start();
         }
         executed = true;

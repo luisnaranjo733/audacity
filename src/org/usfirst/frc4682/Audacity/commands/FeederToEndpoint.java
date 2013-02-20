@@ -4,6 +4,8 @@
  */
 package org.usfirst.frc4682.Audacity.commands;
 import org.usfirst.frc4682.Audacity.RobotMap;
+import org.usfirst.frc4682.Audacity.commands.FeederToStartpoint;
+import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  * @author luis
@@ -16,11 +18,6 @@ public class FeederToEndpoint extends CommandBase {
     }
 
     protected void initialize() {
-        allowed = oi.thirdStick.getRawButton(2);
-        if (!allowed) {
-            System.out.print("The feeder should not run");
-            cancel();
-        }
     }
 
     protected void execute() {
@@ -33,8 +30,8 @@ public class FeederToEndpoint extends CommandBase {
         }
         else {
             feeder.setSpeed(0.0);
-            cancel();
         }
+        //System.out.print("lol");
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -47,14 +44,14 @@ public class FeederToEndpoint extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-        System.out.print("Feeder to endpoint command is finished.\n");
         feeder.stop();
-        System.out.print("Turned off feeder wheel\n");
+        FeederToStartpoint cmd = new FeederToStartpoint();
+        cmd.start();
+        
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-        System.out.print("Feeder To endpoint command has been interrupted\n");
     }
 }
