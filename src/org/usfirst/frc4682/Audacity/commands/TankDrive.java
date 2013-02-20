@@ -20,16 +20,17 @@ public class TankDrive extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
         System.out.print("Starting tank drive...\n");
-        System.out.print("Initial throttle speed: " + oi.getSecondThrottle() + "\n");
+        if (oi.getSecondThrottle() == 0) {
+            System.out.print("WARNING: Your drive throttle reductor is set to 0.\n");
+        }
     }
     
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {        
-        double threshold = 0.3;
+    protected void execute() {
         boolean shooterMoving = (oi.thirdStick.getX() < -0.2 || oi.thirdStick.getX() > 0.2);
-        boolean shooterOverrides = (oi.leftStick.getY() < threshold && oi.rightStick.getY() < threshold);
-        shooterOverrides = shooterOverrides && (oi.leftStick.getY() > -threshold && oi.rightStick.getY() > -threshold);
+        boolean shooterOverrides = (oi.leftStick.getY() < 0.3 && oi.rightStick.getY() < 0.3);
+        shooterOverrides = shooterOverrides && (oi.leftStick.getY() > -0.3 && oi.rightStick.getY() > -0.3);
 
         if (shooterMoving && shooterOverrides){
             reductor = oi.thirdStick.getX() * 0.6;
@@ -46,8 +47,6 @@ public class TankDrive extends CommandBase {
             rightSpeed = oi.rightStick.getY() * reductor;
             driveTrain.tankDrive(leftSpeed, rightSpeed);
         }
-        //out(1, "Drive state: " + driveTrain.state());
-        //out(6, "Drive speed: " + driveTrain.getLeftSpeed());
     }
 
     // Make this return true when this Command no longer needs to run execute()
