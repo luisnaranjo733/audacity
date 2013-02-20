@@ -8,12 +8,12 @@ package org.usfirst.frc4682.Audacity.commands;
  *
  * @author luis
  */
-public class TankDrive extends CommandBase {
+public class AltTankDrive extends CommandBase {
     double leftSpeed;
     double rightSpeed;
     double reductor;
     
-    public TankDrive() {
+    public AltTankDrive() {
         requires(driveTrain);
     }
 
@@ -39,19 +39,15 @@ public class TankDrive extends CommandBase {
         else {
                     // Reduce speed by half when turning
             boolean turning = (leftSpeed < 0 && rightSpeed > 0) || (leftSpeed > 0 && rightSpeed < 0);
-            // implement high + and low + as turn
-            reductor = oi.getSecondThrottle() * 0.6 + 0.4;
-            System.out.print("Throttle: " + oi.getSecondThrottle() + "\n");
+            reductor = oi.getSecondThrottle();
+            System.out.print("drive throttle: " + reductor + "\n");
             if (turning == true) {
                 reductor = 0.8;
             }
-            /*
-             * variable: Throttle (actual speed), Throttle0 (position on throttle thing)
-             * When Throttle = 0.4, Throttle=0
-             */
+            System.out.print("Reductor: " + reductor);
             leftSpeed = oi.leftStick.getY() * reductor;
-            rightSpeed = oi.rightStick.getY() * reductor;
-            driveTrain.tankDrive(leftSpeed, rightSpeed);
+            rightSpeed = oi.rightStick.getX() * reductor;
+            driveTrain.arcadeDrive(leftSpeed, rightSpeed);
         }
     }
 
