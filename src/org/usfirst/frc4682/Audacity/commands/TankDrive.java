@@ -25,33 +25,29 @@ public class TankDrive extends CommandBase {
     
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-        // Reduce speed by half when turning
-        boolean turning = (leftSpeed < 0 && rightSpeed > 0) || (leftSpeed > 0 && rightSpeed < 0);
-        if (turning == false) {
-            reductor = oi.getSecondThrottle();
-        }
-        else {
-            reductor = 0.8;
-        }
-        leftSpeed = oi.leftStick.getY() * reductor;
-        rightSpeed = oi.rightStick.getY() * reductor;
-        
+    protected void execute() {        
         double threshold = 0.3;
         boolean shooterMoving = (oi.thirdStick.getX() < -0.2 || oi.thirdStick.getX() > 0.2);
         boolean shooterOverrides = (oi.leftStick.getY() < threshold && oi.rightStick.getY() < threshold);
         shooterOverrides = shooterOverrides && (oi.leftStick.getY() > -threshold && oi.rightStick.getY() > -threshold);
-        //System.out.print("Shooter stick moving: " + shooterMoving + "\n");
-        //System.out.print("shooter overrides: " + shooterOverrides + "\n");
-        if (shooterMoving == true && shooterOverrides == true){
-            double reductor = oi.thirdStick.getX() * 0.6;
+
+        if (shooterMoving && shooterOverrides){
+            reductor = oi.thirdStick.getX() * 0.6;
             driveTrain.arcadeDrive(0, reductor);
         }
         else {
+                    // Reduce speed by half when turning
+            boolean turning = (leftSpeed < 0 && rightSpeed > 0) || (leftSpeed > 0 && rightSpeed < 0);
+            reductor = oi.getSecondThrottle();
+            if (turning == true) {
+                reductor *= 0.8;
+            }
+            leftSpeed = oi.leftStick.getY() * reductor;
+            rightSpeed = oi.rightStick.getY() * reductor;
             driveTrain.tankDrive(leftSpeed, rightSpeed);
         }
-        out(1, "Drive Train state: " + driveTrain.state());
-        out(6, "Drive Train speed: " + driveTrain.getLeftSpeed());
+        //out(1, "Drive state: " + driveTrain.state());
+        //out(6, "Drive speed: " + driveTrain.getLeftSpeed());
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -34,7 +34,6 @@ public class Feeder extends BaseSubsystem {
             speed = 0;
         }
         feeder.set(speed);
-        System.out.print("Feeder state: " + enabled + "\n");
     }
     
     public double getSpeed() {

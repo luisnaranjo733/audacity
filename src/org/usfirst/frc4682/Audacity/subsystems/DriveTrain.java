@@ -40,11 +40,6 @@ public class DriveTrain extends BaseSubsystem {
         rightVictor.set(0.0);
     }
     
-    public void stopBothMotors() {
-        stopLeftMotor();
-        stopRightMotor();
-    }
-    
     public double getLeftSpeed() {
         return leftVictor.get();
     }
