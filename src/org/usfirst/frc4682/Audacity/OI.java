@@ -71,5 +71,9 @@ public class OI {
         return (-(stick.getRawAxis(3) + 1)/2) + 1;
         
     }
+    
+    public boolean getButton(int button, Joystick stick) {
+        return stick.getRawButton(button);
+    }
 
 }

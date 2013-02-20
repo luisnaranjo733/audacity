@@ -3,16 +3,16 @@
  * and open the template in the editor.
  */
 package org.usfirst.frc4682.Audacity.commands;
-import org.usfirst.frc4682.Audacity.RobotMap;
-import edu.wpi.first.wpilibj.Timer;
+
 /**
  *
- * @author luis
+ * @author Audacity
  */
-public class FeederToStartpoint extends CommandBase {
+public class test extends CommandBase {
     
-    public FeederToStartpoint() {
-        requires(feeder);
+    public test() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
@@ -21,20 +21,16 @@ public class FeederToStartpoint extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        feeder.setSpeed(RobotMap.feederSpeed);
+        System.out.print("adsfad");
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return feeder.atStartLimit();
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-        feeder.stop();
-        feeder.setSpeed(-RobotMap.feederSpeed); // bounce back a bit
-        Timer.delay(0.05);
-        feeder.stop();
     }
 
     // Called when another command which requires one or more of the same
