@@ -4,6 +4,7 @@
  */
 package org.usfirst.frc4682.Audacity.commands;
 
+import java.lang.Math;
 /**
  *
  * @author luis
@@ -53,6 +54,10 @@ public class TankDrive extends CommandBase {
             rightSpeed = oi.rightStick.getY() * reductor;
             driveTrain.tankDrive(leftSpeed, rightSpeed);
         }
+    }
+    
+    protected float curve(float val) {
+       return (float)(val/Math.abs(val)*Math.sqrt(Math.abs(val)));
     }
 
     // Make this return true when this Command no longer needs to run execute()
