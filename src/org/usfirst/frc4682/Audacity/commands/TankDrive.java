@@ -4,7 +4,6 @@
  */
 package org.usfirst.frc4682.Audacity.commands;
 
-import java.lang.Math;
 import com.sun.squawk.util.MathUtils;
 /**
  *
@@ -21,7 +20,7 @@ public class TankDrive extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
         System.out.print("Starting tank drive...\n");
-        if (oi.getSecondThrottle() == 0.4) {
+        if (oi.getSecondThrottle() == 0.0) {
             System.out.print("WARNING: Your drive throttle reductor is set to 0.\n");
         }
     }
@@ -32,7 +31,6 @@ public class TankDrive extends CommandBase {
 
 
         if (shooterCanControl()) { // shooter guy takes over drive
-            
             driveTrain.arcadeDrive(0, oi.thirdStick.getX() * 0.6);
             // 0.6 is the reductor value for the shooter override because this
             // is a precision thing
@@ -55,8 +53,8 @@ public class TankDrive extends CommandBase {
     protected double reducer() {
         double throttle = oi.getSecondThrottle();
         double YStickDiff = Math.abs(oi.getFirstY() - oi.getSecondY());
-        return (0.6 * throttle + 0.4) * (1.0 - 0.3 * throttle * YStickDiff);
-    }
+        return (0.5 * throttle + 0.5)/*must add up to 1, added val is the new 0*/ * (1.0 - (0.2 * throttle * YStickDiff));
+    }           /*   0.6*throttle +0.4   0.4 is the zero*/                          /*^  -( ^ * 2 )is max reduction val */
     
     protected boolean shooterCanControl() {
         boolean shooterMoving = (oi.getThirdX() < -0.2 || oi.getThirdX() > 0.2); // correct
