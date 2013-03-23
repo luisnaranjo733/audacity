@@ -4,15 +4,17 @@
  */
 package org.usfirst.frc4682.Audacity.commands;
 
+import org.usfirst.frc4682.Audacity.RobotMap;
+
 /**
  *
  * @author luis
  */
 public class Autonomous extends CommandBase {
     
+    private int frisbeesShot = 0;
     public Autonomous() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        requires(shooter);
     }
 
     // Called just before this Command runs the first time
@@ -21,11 +23,21 @@ public class Autonomous extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        frisbeesShot += 1;
+        shooter.enable();
+        shooter.setSpeed(1.0);
+        while (!feeder.atEndLimit()) {
+            feeder.setSpeed(-RobotMap.feederSpeed);
+        }
+        while (!feeder.atStartLimit()) {
+            feeder.setSpeed(RobotMap.feederSpeed);
+        }
+  
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return frisbeesShot < 3;
     }
 
     // Called once after isFinished returns true

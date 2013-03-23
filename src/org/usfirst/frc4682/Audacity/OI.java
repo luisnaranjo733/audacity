@@ -76,4 +76,16 @@ public class OI {
         return stick.getRawButton(button);
     }
     
+    public double getFirstY() {
+        return leftStick.getY();
+    }
+    
+    public double getSecondY() {
+        return rightStick.getY();
+    }
+    
+    public double getThirdX() {
+        return thirdStick.getX();
+    }
+    
 }

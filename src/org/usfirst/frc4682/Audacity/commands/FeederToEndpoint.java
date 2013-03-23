@@ -31,7 +31,6 @@ public class FeederToEndpoint extends CommandBase {
         else {
             feeder.setSpeed(0.0);
         }
-        //System.out.print("lol");
     }
 
     // Make this return true when this Command no longer needs to run execute()

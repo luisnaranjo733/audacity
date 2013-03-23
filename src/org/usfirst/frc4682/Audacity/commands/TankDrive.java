@@ -29,18 +29,18 @@ public class TankDrive extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        boolean shooterMoving = (oi.thirdStick.getX() < -0.2 || oi.thirdStick.getX() > 0.2);
-        boolean shooterOverrides = (oi.leftStick.getY() < 0.3 && oi.rightStick.getY() < 0.3);
-        shooterOverrides = shooterOverrides && (oi.leftStick.getY() > -0.3 && oi.rightStick.getY() > -0.3);
+        boolean shooterMoving = (oi.getThirdX() < -0.2 || oi.getThirdX() > 0.2);
+        boolean shooterOverrides = Math.abs(oi.getFirstY()) < 0.3;
+        shooterOverrides = shooterOverrides && Math.abs(oi.getSecondY()) < 0.3;
 
         if (shooterMoving && shooterOverrides){
-            reductor = oi.thirdStick.getX() * 0.6;
-            driveTrain.arcadeDrive(0, reductor);
+            driveTrain.arcadeDrive(0, oi.thirdStick.getX() * 0.6);
         }
         else {
                     // Reduce speed by half when turning
             boolean turning = (leftSpeed < 0 && rightSpeed > 0) || (leftSpeed > 0 && rightSpeed < 0);
-            // implement high + and low + as turn
+            double diff = Math.abs(leftSpeed) - Math.abs(rightSpeed);
+
             reductor = oi.getSecondThrottle() * 0.6 + 0.4;
             System.out.print("Throttle: " + oi.getSecondThrottle() + "\n");
             if (turning == true) {
@@ -52,13 +52,17 @@ public class TankDrive extends CommandBase {
              */
             leftSpeed = oi.leftStick.getY() * reductor;
             rightSpeed = oi.rightStick.getY() * reductor;
+            
+            leftSpeed = curve(leftSpeed);
+            rightSpeed = curve(rightSpeed);
             driveTrain.tankDrive(leftSpeed, rightSpeed);
         }
     }
     
-    protected float curve(float val) {
-       return (float)(val/Math.abs(val)*Math.sqrt(Math.abs(val)));
+    protected double curve(double val) {
+       return (val/Math.abs(val)*Math.sqrt(Math.abs(val)));
     }
+    
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
