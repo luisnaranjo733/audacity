@@ -61,7 +61,7 @@ public class OI {
     }
     
     public double getSecondThrottle() {
-        return getThrottle(rightStick);
+        return getThrottle(rightStick);// * 0.6 + 0.4;
     }
     
     public double getThirdThrottle() {
