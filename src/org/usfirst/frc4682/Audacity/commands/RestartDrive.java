@@ -13,7 +13,7 @@ public class RestartDrive extends CommandBase {
     private boolean enabled = false;
     
     public RestartDrive() {
-        //requires(driveTrain);
+        // requires(driveTrain); // commented post-bag
     }
 
     // Called just before this Command runs the first time
@@ -25,9 +25,9 @@ public class RestartDrive extends CommandBase {
     protected void execute() {
         driveTrain.enable();
         enabled = true;
-        TankDrive tankDrive = new TankDrive();
+        TankDrive tankDrive = new TankDrive(); // is this ok?
         tankDrive.start();
-        
+        // end(); // Something to look into
     }
 
     // Make this return true when this Command no longer needs to run execute()
