@@ -20,6 +20,7 @@ public class Autonomous extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        frisbeesShot = 0;
         shooter.enable();
         feeder.enable();
         shooter.setSpeed(1.0);
@@ -35,13 +36,16 @@ public class Autonomous extends CommandBase {
         while (!feeder.atStartLimit()) {
             feeder.setSpeed(RobotMap.feederSpeed);
         }
+        feeder.setSpeed(-RobotMap.feederSpeed);
+        Timer.delay(0.05);
+        feeder.stop();
         Timer.delay(2);
   
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return frisbeesShot < 3;
+        return frisbeesShot >=  2;
     }
 
     // Called once after isFinished returns true

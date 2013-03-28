@@ -41,13 +41,16 @@ public class TankDrive extends CommandBase {
             
             leftSpeed = curve(leftSpeed);
             rightSpeed = curve(rightSpeed);
+            out(5, "Left speed: " + leftSpeed);
+            out(6, "Right speed: " + rightSpeed);
             driveTrain.tankDrive(leftSpeed, rightSpeed);
         }
     }
 
     protected double curve(double StickY) {
         StickY *= reducer();
-        return MathUtils.pow(StickY, 1.0/3.0);
+        return (StickY/Math.abs(StickY)) * MathUtils.pow(Math.abs(StickY), 1.0/3.0);
+        //return MathUtils.pow(StickY, 1.0/3.0);
     }
     
     protected double reducer() {

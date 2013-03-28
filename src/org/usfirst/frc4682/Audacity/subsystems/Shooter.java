@@ -15,6 +15,7 @@ import org.usfirst.frc4682.Audacity.RobotMap;
 // This subsystem should work.
 public class Shooter extends BaseSubsystem {
     SpeedController wheels = new Talon(RobotMap.leftShooterPort);
+    SpeedController wheelTwo = new Talon(RobotMap.rightShooterPort);
 
     public void initDefaultCommand() {
         
@@ -25,6 +26,7 @@ public class Shooter extends BaseSubsystem {
             speed = 0;
         }
         wheels.set(speed);
+        wheelTwo.set(speed);
     }
     
     public void stop() {
