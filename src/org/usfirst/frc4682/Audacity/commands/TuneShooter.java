@@ -14,15 +14,13 @@ public class TuneShooter extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        System.out.print("Tuning shooter..\n.");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        double shooterSpeed = -oi.getThirdThrottle();
-        shooter.setSpeed(shooterSpeed);
-        out(3, "Shooter state: " + shooter.state());
-        out(5, "Shooter speed: " + shooter.get()); // same for both
+        /*double shooterSpeed = -oi.getThirdThrottle();
+        shooter.setSpeed(-shooterSpeed); */
+        shooter.setSpeed(-1.0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -33,7 +31,6 @@ public class TuneShooter extends CommandBase {
     // Called once after isFinished returns true
     protected void end() {
         shooter.stop();
-        System.out.print("Stopping both shooter wheels\n");
     }
 
     // Called when another command which requires one or more of the same

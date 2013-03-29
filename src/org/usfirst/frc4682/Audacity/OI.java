@@ -88,4 +88,8 @@ public class OI {
         return thirdStick.getX();
     }
     
+    public double getThirdY() {
+            return thirdStick.getY();
+    }
+    
 }

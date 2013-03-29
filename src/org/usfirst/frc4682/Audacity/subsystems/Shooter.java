@@ -25,8 +25,8 @@ public class Shooter extends BaseSubsystem {
         if (enabled == false) {
             speed = 0;
         }
-        wheels.set(speed);
-        wheelTwo.set(speed);
+        wheels.set(-speed);
+        wheelTwo.set(-speed);
     }
     
     public void stop() {

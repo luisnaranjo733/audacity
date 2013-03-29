@@ -28,12 +28,19 @@ public class TankDrive extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        out(1, "Enabled: " + driveTrain.state());
 
-
-        if (shooterCanControl()) { // shooter guy takes over drive
-            driveTrain.arcadeDrive(0, oi.thirdStick.getX() * 0.6);
-            // 0.6 is the reductor value for the shooter override because this
-            // is a precision thing
+        //if (shooterCanControl()) { // shooter guy takes over drive
+        if (false) {
+            double yAxis = oi.thirdStick.getY();
+            double xAxis = oi.thirdStick.getX();
+            double throttle = oi.getThirdThrottle();
+            yAxis *= throttle;
+            xAxis *= throttle;
+            System.out.print("Y axis: " + yAxis);
+            System.out.print("X axis: " + xAxis);
+            driveTrain.drive.arcadeDrive(yAxis, xAxis);
+            
         }
         else {
             leftSpeed = oi.getFirstY(); // -1 to 1
@@ -41,9 +48,9 @@ public class TankDrive extends CommandBase {
             
             leftSpeed = curve(leftSpeed);
             rightSpeed = curve(rightSpeed);
-            out(5, "Left speed: " + leftSpeed);
-            out(6, "Right speed: " + rightSpeed);
             driveTrain.tankDrive(leftSpeed, rightSpeed);
+            out(2, "Left drive: " + leftSpeed);
+            out(3, "Right drive: " + rightSpeed);
         }
     }
 
@@ -61,6 +68,7 @@ public class TankDrive extends CommandBase {
     
     protected boolean shooterCanControl() {
         boolean shooterMoving = (oi.getThirdX() < -0.2 || oi.getThirdX() > 0.2); // correct
+        shooterMoving = shooterMoving || (oi.getThirdY() < -0.2 || oi.getThirdY() > 0.2);
         
         // override threshold is 0.3
         boolean shooterOverrides = Math.abs(oi.getFirstY()) < 0.3; // correct

@@ -1,5 +1,6 @@
 package org.usfirst.frc4682.Audacity.subsystems;
 
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -13,7 +14,7 @@ public class DriveTrain extends BaseSubsystem {
     
     SpeedController leftVictor = new Victor(RobotMap.leftDrivePort);
     SpeedController rightVictor = new Victor(RobotMap.rightDrivePort);
-    RobotDrive drive = new RobotDrive(leftVictor, rightVictor);
+    public RobotDrive drive = new RobotDrive(leftVictor, rightVictor);
 
     public void initDefaultCommand() {
         setDefaultCommand(new TankDrive());
@@ -31,7 +32,9 @@ public class DriveTrain extends BaseSubsystem {
     public void arcadeDrive(double moveValue, double rotateValue) {
         drive.arcadeDrive(moveValue, rotateValue);
     }
-    
+    public void arcadeDrive(GenericHID Stick, boolean squaredInputs) {
+        drive.arcadeDrive(Stick, squaredInputs);
+    }
     public void stopLeftMotor() {
         leftVictor.set(0.0);
     }

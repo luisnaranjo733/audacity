@@ -21,16 +21,9 @@ public class FeederToEndpoint extends CommandBase {
     }
 
     protected void execute() {
-        double feederSpeed = -(oi.getFirstThrottle() + RobotMap.feederSpeed);
-        if (feederSpeed > 1.0) {
-            feederSpeed = 1.0;
-        }
-        if (feeder.enabled) {
-            feeder.setSpeed(feederSpeed);
-        }
-        else {
-            feeder.setSpeed(0.0);
-        }
+        //feeder.setSpeed(-RobotMap.feederSpeed);
+        double speed = Math.abs(0.5 * oi.getThirdThrottle() + 0.5);
+        feeder.setSpeed(-speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
