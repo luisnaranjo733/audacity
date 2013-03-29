@@ -23,7 +23,7 @@ public class Autonomous extends CommandBase {
         frisbeesShot = 0;
         shooter.enable();
         feeder.enable();
-        shooter.setSpeed(1.0);
+        shooter.setSpeed(-1.0);
         Timer.delay(1);
     }
 
