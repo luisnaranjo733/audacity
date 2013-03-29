@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Timer;
  */
 public class Autonomous extends CommandBase {
     
+    public double shootingSpeed = 0.85;
     private int frisbeesShot = 0;
     public Autonomous() {
         requires(shooter);
@@ -23,8 +24,9 @@ public class Autonomous extends CommandBase {
         frisbeesShot = 0;
         shooter.enable();
         feeder.enable();
-        shooter.setSpeed(-1.0);
+        shooter.setSpeed(-shootingSpeed);
         Timer.delay(1);
+        System.out.print("Autonomous speed: " + shootingSpeed);
     }
 
     // Called repeatedly when this Command is scheduled to run
