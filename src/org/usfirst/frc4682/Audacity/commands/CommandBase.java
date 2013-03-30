@@ -45,7 +45,7 @@ public abstract class CommandBase extends Command {
     }
     
     public void out(int line, String text) {
-        text += "                              ";
+        text += "                             ";
         
         if (line == 1) {
             message.println(DriverStationLCD.Line.kUser1, 1, text);

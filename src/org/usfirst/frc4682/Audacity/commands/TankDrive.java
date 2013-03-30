@@ -4,47 +4,40 @@
  */
 package org.usfirst.frc4682.Audacity.commands;
 
+import com.sun.squawk.util.MathUtils;
 /**
  *
  * @author luis
  */
 public class TankDrive extends CommandBase {
-    double leftThrottle;
-    double rightThrottle;
+    double leftSpeed;
+    double rightSpeed;
     
     public TankDrive() {
         requires(driveTrain);
     }
+    
+    protected void execute() {
+        leftSpeed = oi.getFirstY(); // -1 to 1
+        rightSpeed = oi.getSecondY();
+        leftSpeed = curve(leftSpeed);
+        rightSpeed = curve(rightSpeed);
+        driveTrain.tankDrive(leftSpeed, rightSpeed);
+        }
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-        System.out.print("Starting tank drive...\n");
-        System.out.print("Initial throttle speed: " + oi.getSecondThrottle() + "\n");
+    protected double curve(double StickY) {
+        StickY *= reducer();
+        return (StickY/Math.abs(StickY)) * MathUtils.pow(Math.abs(StickY), 1.0/3.0);
     }
     
+    protected double reducer() {
+        double throttle = oi.getSecondThrottle();
+        double YStickDiff = Math.abs(oi.getFirstY() - oi.getSecondY());
+        return (0.5 * throttle + 0.5)/*must add up to 1, added val is the new 0*/ * (1.0 - (0.2 * throttle * YStickDiff));
+    }           /*   0.6*throttle +0.4   0.4 is the zero*/                          /*^  -( ^ * 2 )is max reduction val */
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-        // Reduce speed by half when turning
-        double leftSpeed = oi.leftStick.getY() * oi.getSecondThrottle(); // 
-        double rightSpeed = oi.rightStick.getY() * oi.getSecondThrottle();
-        driveTrain.tankDrive(leftSpeed, rightSpeed);
-        out(1, "Drive Train state: " + driveTrain.state());
-        out(6, "Drive Train speed: " + driveTrain.getLeftSpeed());
-    }
-
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
-
-    // Called once after isFinished returns true
-    protected void end() {
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-        System.out.print("Tank Drive interrupted!\n");
-    }
+    protected void initialize() {}
+    protected boolean isFinished() {return false;}
+    protected void end() {}
+    protected void interrupted() {}
 }
