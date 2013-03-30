@@ -3,8 +3,6 @@
  * and open the template in the editor.
  */
 package org.usfirst.frc4682.Audacity.commands;
-
-import org.usfirst.frc4682.Audacity.RobotMap;
 import edu.wpi.first.wpilibj.Timer;
 /**
  *
@@ -12,7 +10,8 @@ import edu.wpi.first.wpilibj.Timer;
  */
 public class Autonomous extends CommandBase {
     
-    public double shootingSpeed = 0.85;
+    private double shootingSpeed = 0.85;
+    private double feederSpeed = 0.5;
     private int frisbeesShot = 0;
     public Autonomous() {
         requires(shooter);
@@ -22,23 +21,20 @@ public class Autonomous extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
         frisbeesShot = 0;
-        shooter.enable();
-        feeder.enable();
-        shooter.setSpeed(-shootingSpeed);
+        shooter.setForward(shootingSpeed);
         Timer.delay(1);
-        System.out.print("Autonomous speed: " + shootingSpeed);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         frisbeesShot += 1;
         while (!feeder.atEndLimit()) {
-            feeder.setSpeed(-RobotMap.feederSpeed);
+            feeder.setForward(feederSpeed);
         }
         while (!feeder.atStartLimit()) {
-            feeder.setSpeed(RobotMap.feederSpeed);
+            feeder.setBackward(feederSpeed);
         }
-        feeder.setSpeed(-RobotMap.feederSpeed);
+        feeder.setForward(feederSpeed);
         Timer.delay(0.05);
         feeder.stop();
         Timer.delay(2);
@@ -54,8 +50,6 @@ public class Autonomous extends CommandBase {
     protected void end() {
         feeder.stop();
         shooter.stop();
-        feeder.disable();
-        shooter.disable();
     }
 
     // Called when another command which requires one or more of the same

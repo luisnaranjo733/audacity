@@ -16,48 +16,18 @@ public class TankDrive extends CommandBase {
     public TankDrive() {
         requires(driveTrain);
     }
-
-    // Called just before this Command runs the first time
-    protected void initialize() {
-        System.out.print("Starting tank drive...\n");
-        if (oi.getSecondThrottle() == 0.0) {
-            System.out.print("WARNING: Your drive throttle reductor is set to 0.\n");
-        }
-    }
     
-
-    // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        out(1, "Enabled: " + driveTrain.state());
-
-        //if (shooterCanControl()) { // shooter guy takes over drive
-        if (false) {
-            double yAxis = oi.thirdStick.getY();
-            double xAxis = oi.thirdStick.getX();
-            double throttle = oi.getThirdThrottle();
-            yAxis *= throttle;
-            xAxis *= throttle;
-            System.out.print("Y axis: " + yAxis);
-            System.out.print("X axis: " + xAxis);
-            driveTrain.drive.arcadeDrive(yAxis, xAxis);
-            
+        leftSpeed = oi.getFirstY(); // -1 to 1
+        rightSpeed = oi.getSecondY();
+        leftSpeed = curve(leftSpeed);
+        rightSpeed = curve(rightSpeed);
+        driveTrain.tankDrive(leftSpeed, rightSpeed);
         }
-        else {
-            leftSpeed = oi.getFirstY(); // -1 to 1
-            rightSpeed = oi.getSecondY();
-            
-            leftSpeed = curve(leftSpeed);
-            rightSpeed = curve(rightSpeed);
-            driveTrain.tankDrive(leftSpeed, rightSpeed);
-            out(2, "Left drive: " + leftSpeed);
-            out(3, "Right drive: " + rightSpeed);
-        }
-    }
 
     protected double curve(double StickY) {
         StickY *= reducer();
         return (StickY/Math.abs(StickY)) * MathUtils.pow(Math.abs(StickY), 1.0/3.0);
-        //return MathUtils.pow(StickY, 1.0/3.0);
     }
     
     protected double reducer() {
@@ -65,29 +35,9 @@ public class TankDrive extends CommandBase {
         double YStickDiff = Math.abs(oi.getFirstY() - oi.getSecondY());
         return (0.5 * throttle + 0.5)/*must add up to 1, added val is the new 0*/ * (1.0 - (0.2 * throttle * YStickDiff));
     }           /*   0.6*throttle +0.4   0.4 is the zero*/                          /*^  -( ^ * 2 )is max reduction val */
-    
-    protected boolean shooterCanControl() {
-        boolean shooterMoving = (oi.getThirdX() < -0.2 || oi.getThirdX() > 0.2); // correct
-        shooterMoving = shooterMoving || (oi.getThirdY() < -0.2 || oi.getThirdY() > 0.2);
-        
-        // override threshold is 0.3
-        boolean shooterOverrides = Math.abs(oi.getFirstY()) < 0.3; // correct
-        shooterOverrides = shooterOverrides && Math.abs(oi.getSecondY()) < 0.3; // correct
-        return shooterMoving && shooterOverrides;
-    }
-    
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
 
-    // Called once after isFinished returns true
-    protected void end() {
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-        System.out.print("Tank Drive interrupted!\n");
-    }
+    protected void initialize() {}
+    protected boolean isFinished() {return false;}
+    protected void end() {}
+    protected void interrupted() {}
 }

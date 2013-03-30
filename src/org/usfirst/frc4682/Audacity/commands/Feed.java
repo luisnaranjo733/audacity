@@ -3,13 +3,14 @@
  * and open the template in the editor.
  */
 package org.usfirst.frc4682.Audacity.commands;
-import org.usfirst.frc4682.Audacity.commands.FeederToEndpoint;
+
+import edu.wpi.first.wpilibj.Timer;
+
 /**
  *
  * @author Audacity
  */
 public class Feed extends CommandBase {
-    private boolean executed = false;
     
     public Feed() {
         requires(feeder);
@@ -21,20 +22,31 @@ public class Feed extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (oi.getButton(2, oi.thirdStick) && feeder.enabled) {
-            new FeederToEndpoint().start();
+        if(oi.readyToFeed()) {
+            while(!feeder.atEndLimit()) {
+                feeder.setForward(getSpeed());
+            }
+            while (!feeder.atStartLimit()) {
+                feeder.setBackward(getSpeed());
+            }
+            feeder.setForward(getSpeed());
+            Timer.delay(0.05);
+            feeder.stop();
         }
-        executed = true;
+            // break after a certain amount of time
+    }
+    
+    private double getSpeed() {
+        return 0.5 * oi.getThirdThrottle() + 0.5;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return executed;
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-        System.out.print("Shot!\n");
     }
 
     // Called when another command which requires one or more of the same

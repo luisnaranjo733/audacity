@@ -1,14 +1,16 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package org.usfirst.frc4682.Audacity.commands;
 
-/*
- * This command only manages the control of the shooter wheel speeds.
- * It uses the throttle on the first two connected joysticks.
- * A 90 degree throttle above the horizontal is full speed.
+/**
+ *
+ * @author Audacity
  */
-
-public class TuneShooter extends CommandBase {
+public class Shoot extends CommandBase {
     
-    public TuneShooter() {
+    public Shoot() {
         requires(shooter);
     }
 
@@ -18,20 +20,21 @@ public class TuneShooter extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        /* double shooterSpeed = oi.getThirdThrottle();
-        shooter.setSpeed(-shooterSpeed);
-        System.out.print("Shooter speed: " + shooterSpeed); */
-        shooter.setSpeed(-1.0);
+        if(oi.readyToShoot()) {
+            shooter.setForward(1.0);
+        }
+        else {
+            shooter.stop();
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return !oi.thirdStick.getRawButton(2);
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-        shooter.stop();
     }
 
     // Called when another command which requires one or more of the same
