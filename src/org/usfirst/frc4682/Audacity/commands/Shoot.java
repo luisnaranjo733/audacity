@@ -6,30 +6,31 @@ package org.usfirst.frc4682.Audacity.commands;
 
 /**
  *
- * @author luis
+ * @author Audacity
  */
-public class RestartFeeder extends CommandBase {
-    private boolean enabled = false;
+public class Shoot extends CommandBase {
     
-    public RestartFeeder() {
-        //requires(feeder);
+    public Shoot() {
+        requires(shooter);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        System.out.print("Restarting the Drive Train");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        feeder.enable();
-        feeder.enabled = true;
-        enabled = true;
+        if(oi.readyToShoot()) {
+            shooter.setForward(1.0);
+        }
+        else {
+            shooter.stop();
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return enabled;
+        return false;
     }
 
     // Called once after isFinished returns true

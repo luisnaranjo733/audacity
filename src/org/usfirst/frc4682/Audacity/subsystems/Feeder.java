@@ -3,20 +3,21 @@ package org.usfirst.frc4682.Audacity.subsystems;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.DigitalInput;
-import org.usfirst.frc4682.Audacity.RobotMap;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc4682.Audacity.commands.Feed;
 /**
  *
  * @author luis
  */
 
 // this subsystem should work
-public class Feeder extends BaseSubsystem {
-    SpeedController feeder = new Talon(RobotMap.FeederPort);
-    DigitalInput startLimit = new DigitalInput(RobotMap.startLimitSwitchPort);
-    DigitalInput endLimit = new DigitalInput(RobotMap.endLimitSwitchPort);
+public class Feeder extends Subsystem {
+    SpeedController feeder = new Talon(8);
+    DigitalInput startLimit = new DigitalInput(1);
+    DigitalInput endLimit = new DigitalInput(2);
 
     public void initDefaultCommand() {
-        //setDefaultCommand(new UpdateFeederOnLCD());
+        setDefaultCommand(new Feed());
     }
     
     public boolean atEndLimit() { // Normally open limit switch
@@ -30,11 +31,17 @@ public class Feeder extends BaseSubsystem {
     }
     
     public void setSpeed(double speed) {
-        if (enabled == false) {
-            speed = 0;
-        }
         feeder.set(speed);
-        System.out.print("Feeder state: " + enabled + "\n");
+    }
+    
+    public void setForward(double speed) {
+        double velocity = -Math.abs(speed);
+        setSpeed(velocity);
+    }
+    
+    public void setBackward(double speed) {
+        double velocity = Math.abs(speed);
+        setSpeed(velocity);
     }
     
     public double getSpeed() {
